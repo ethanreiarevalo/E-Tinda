@@ -5,7 +5,7 @@ $itemname = $_POST['itemname'];
 $numberinstock = $_POST['numberinstock'];
 $capital = $_POST['capital'];
 $sellingprice = $_POST['sellingprice'];
-$datemodified = $_POST['datemodified'];
+
 
 
 $servername = "localhost";
@@ -20,7 +20,7 @@ if (!$conn) {
 }
 
 $sql = "INSERT INTO `$storename` (itemid, itemname, stock, capital, sellingPrice, dateModified)
-VALUES (null, '$itemname', '$numberinstock', '$capital', '$sellingprice', '$datemodified')";
+VALUES (null, '$itemname', '$numberinstock', '$capital', '$sellingprice', CURDATE())";
 
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
