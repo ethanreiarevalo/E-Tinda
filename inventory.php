@@ -130,11 +130,11 @@ $lname=$_SESSION['last_name'];
                 <div id="add_item">
                     <center>
                     <label for="">Add new Product</label>
-                    <form action="" method="post">
-                        <input type="text" placeholder="Product Name">
-                        <input type="text" placeholder="Stock">
-                        <input type="text" placeholder="Capital Price">
-                        <input type="text" placeholder="Selling Price">
+                    <form action="inventoryprocess.php" method="post">
+                        <input type="text" placeholder="Product Name" name="itemname">
+                        <input type="text" placeholder="Stock" name="numberinstock">
+                        <input type="text" placeholder="Capital Price" name="capital">
+                        <input type="text" placeholder="Selling Price" name="sellingprice">
                         <button id="addButton">Add Product</button>
                     </form>
                     </center>
