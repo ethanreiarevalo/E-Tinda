@@ -34,7 +34,7 @@ $lname=$_SESSION['last_name'];
             <div id="link">Point-Of-Sales</div></a>
             <a href="inventory.php" ><div id="link"><h5>Inventory</h5></div></a>
             <div id="hr"></div>
-            <a href="index.php" ><div id="link">Logout</div></a> 
+            <a href="logout.php" ><div id="link">Logout</div></a> 
         
         </center>
         
@@ -139,9 +139,9 @@ $lname=$_SESSION['last_name'];
                     <label for="">Add new Product</label>
                     <form action="inventoryprocess.php" method="post">
                         <input type="text" placeholder="Product Name" name="itemname">
-                        <input type="text" placeholder="Stock" name="numberinstock">
-                        <input type="text" placeholder="Capital Price" name="capital">
-                        <input type="text" placeholder="Selling Price" name="sellingprice">
+                        <input type="number" placeholder="Stock" name="numberinstock">
+                        <input type="number" step="0.01" placeholder="Capital Price" name="capital">
+                        <input type="number"  step = "0.01"placeholder="Selling Price" name="sellingprice">
                         <button id="addButton">Add Product</button>
                     </form>
                     </center>
