@@ -17,12 +17,12 @@
                     <div id="hr"></div>
                     <h4 style="color: ghostwhite;">STORE NAME</h4>
                     <div id="hr"></div>
-                    <a href="account.html" ><div id="link" class="link"><h5>Profile</h5></div></a>
+                    <a href="account.php" ><div id="link" class="link"><h5>Profile</h5></div></a>
                     <div id="hr"></div>
-                    <a href="pos.html" ><div id="link">Point-Of-Sales</div></a>
-                    <a href="inventory.html" ><div id="link">Inventory</div></a>
+                    <a href="pos.php" ><div id="link">Point-Of-Sales</div></a>
+                    <a href="inventory.php" ><div id="link">Inventory</div></a>
                     
-                    <a href="index.html" ><div id="link">Logout</div></a> 
+                    <a href="index.php" ><div id="link">Logout</div></a> 
                 
                 </center>
                 

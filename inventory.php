@@ -28,7 +28,7 @@ $lname=$_SESSION['last_name'];
             <div id="hr"></div>
             <h4 style="color: ghostwhite;"><?php echo $storename?></h4>
             <div id="hr"></div>
-            <a href="account.html" ><div id="link" class="link">Profile</div></a>
+            <a href="account.php" ><div id="link" class="link">Profile</div></a>
             
             <a href="pos.php" >
             <form action="pos.php" method="post">
@@ -40,9 +40,9 @@ $lname=$_SESSION['last_name'];
                     $_SESSION['last_name']=$lname;
                     ?>
             <div id="link">Point-Of-Sales</div></form></a>
-            <a href="inventory.html" ><div id="link"><h5>Inventory</h5></div></a>
+            <a href="inventory.php" ><div id="link"><h5>Inventory</h5></div></a>
             <div id="hr"></div>
-            <a href="index.html" ><div id="link">Logout</div></a> 
+            <a href="index.php" ><div id="link">Logout</div></a> 
         
         </center>
         
