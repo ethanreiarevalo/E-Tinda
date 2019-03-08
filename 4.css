@@ -63,3 +63,22 @@ li{
 #link:hover{
     background-color: #1c2541;
 }
+#manage{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background-color: rebeccapurple;
+}
+#profile{
+    
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+#pro{
+    border: 1px solid #0b132b;
+    width: 80%;
+    padding: 5%;
+}
+#container{
+   background-color: #0b132b;
+}
