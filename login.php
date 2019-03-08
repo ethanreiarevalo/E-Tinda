@@ -27,7 +27,7 @@ $row = mysqli_fetch_array($result);
         $_SESSION['first_name'] = $fname;
         $_SESSION['last_name'] = $lname;
         $_SESSION['email'] = $email;
-        header("location:account.php");
+        header("location:inventory.php");
     }else if($row["username"] == $username && $row["userpassword"] == $password && $row["type"] == "admin"){
         
         $_SESSION['username'] = $username;
@@ -40,11 +40,11 @@ $row = mysqli_fetch_array($result);
         $_SESSION['first_name'] = $fname;
         $_SESSION['last_name'] = $lname;
         $_SESSION['email'] = $email;
-        header("location:admin.php");
+        header("location:inventory.php");
     }else{
         
         print("<script type = text/javascript>alert('Login Unsuccessful...');</script>") ;
-        header("refresh:.1;url=registration.php");
+        header("refresh:.1;url=index.php");
     }
 
 mysqli_close($conn);

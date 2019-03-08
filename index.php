@@ -19,9 +19,9 @@
                   <h4>Online Inventory and POS system</h4>
               </div>
               <div id="login">
-                <form action="">
-                    <input id="login_input" type="text" placeholder="Username">
-                    <input id="login_input" type="password" placeholder="Password">
+                <form action="login.php" method="post">
+                    <input id="login_input" type="text" placeholder="Username" name="username">
+                    <input id="login_input" type="password" placeholder="Password" name="password">
                     <button id="button_input">Login</button>
                 </form>
               </div>
@@ -33,15 +33,15 @@
             </div>
 
             
-                <form action="" id = "signform">
+                <form action="register.php" id = "signform" method="post">
                     <center><h3>Register Now!</h3></center>
-                    <input id="sign" type="text" placeholder="Username">
-                    <input id="sign" type="password" placeholder="Password">
-                    <input id="sign" type="text" placeholder="Email">
-                    <input id="sign" type="text" placeholder="Store Name">
-                    <input id="sign" type="text" placeholder="Your first name">
-                    <input  id="sign"type="text" placeholder="Your last name">
-                    <center><button id="signup_button">Sign Up!</button></center> 
+                    <input id="sign" type="text" placeholder="Username" name="username">
+                    <input id="sign" type="password" placeholder="Password" name="password">
+                    <input id="sign" type="text" placeholder="Email" name="email">
+                    <input id="sign" type="text" placeholder="Store Name" name="store_name">
+                    <input id="sign" type="text" placeholder="Your first name" name="first_name">
+                    <input  id="sign"type="text" placeholder="Your last name" name="last_name">
+                    <center><button id="signup_button" value="Insert" type="submit">Sign Up!</button></center> 
                 </form>
             
         </div>
