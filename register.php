@@ -25,13 +25,26 @@ if(mysqli_query($con,"INSERT INTO `t_account` VALUES (null,'$username','$email',
     dateModified DATE
     )";
     if ($con->query($sql) === TRUE) {
-      $_SESSION['username'] = $username;
-      $_SESSION['password'] = $pass;
-      $_SESSION['store_name'] = $storename;
-      $_SESSION['first_name'] = $fname;
-      $_SESSION['last_name'] = $lname;
-      $_SESSION['email'] = $email;
-        header("location: account.php");
+      $postblname = $storename."_POS";
+      $sql2 = "CREATE TABLE IF NOT EXISTS `$postblname` (
+        transactionID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+        transactinonDescription VARCHAR(30) NOT NULL,
+        transactionQuantity INT(10),
+        capital float(10,2),
+        sellingPrice float(10,2),
+        dateModified DATE
+        )";
+        if ($con->query($sql2) === TRUE) {
+          $_SESSION['username'] = $username;
+          $_SESSION['password'] = $pass;
+          $_SESSION['store_name'] = $storename;
+          $_SESSION['first_name'] = $fname;
+          $_SESSION['last_name'] = $lname;
+          $_SESSION['email'] = $email;
+            header("location: account.php");
+        } else {
+            echo "Error creating POS table: " . $con->error;
+        }
     } else {
         echo "Error creating table: " . $con->error;
     }

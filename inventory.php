@@ -31,15 +31,7 @@ $lname=$_SESSION['last_name'];
             <a href="account.php" ><div id="link" class="link">Profile</div></a>
             
             <a href="pos.php" >
-            <form action="pos.php" method="post">
-                    <?php $_SESSION['username'] = $username;
-                    $_SESSION['password'] = $password;
-                    $_SESSION['store_name'] = $storename;
-                    $_SESSION['email']=$email;
-                    $_SESSION['first_name']=$fname;
-                    $_SESSION['last_name']=$lname;
-                    ?>
-            <div id="link">Point-Of-Sales</div></form></a>
+            <div id="link">Point-Of-Sales</div></a>
             <a href="inventory.php" ><div id="link"><h5>Inventory</h5></div></a>
             <div id="hr"></div>
             <a href="index.php" ><div id="link">Logout</div></a> 
@@ -58,7 +50,9 @@ $lname=$_SESSION['last_name'];
             
                     <h1>P 5000.00</h1>
                         
-                    <p>March 4, 2019</p>
+                    <p><?php 
+                    echo date('Y-m-d');
+                    ?></p>
                 </center>
                 
             </div>
