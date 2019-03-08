@@ -29,7 +29,16 @@ $lname=$_SESSION['last_name'];
             <h4 style="color: ghostwhite;"><?php echo $storename?></h4>
             <div id="hr"></div>
             <a href="account.html" ><div id="link" class="link">Profile</div></a>
-            <a href="pos.html" ><div id="link">Point-Of-Sales</div></a>
+            <form action="pos.php" method="post">
+                    <?php $_SESSION['username'] = $username;
+                    $_SESSION['password'] = $password;
+                    $_SESSION['store_name'] = $storename;
+                    $_SESSION['email']=$email;
+                    $_SESSION['first_name']=$fname;
+                    $_SESSION['last_name']=$lname;
+                    ?>
+                    <a href="pos.html" ><div id="link">Point-Of-Sales
+            </div></a></form>
             <a href="inventory.html" ><div id="link"><h5>Inventory</h5></div></a>
             <div id="hr"></div>
             <a href="index.html" ><div id="link">Logout</div></a> 
