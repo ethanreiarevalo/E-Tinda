@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+$username = $_SESSION['username'];
+$password = $_SESSION['password'];
+$storename = $_SESSION['store_name'];
+$email=$_SESSION['email'];
+$fname=$_SESSION['first_name'];
+$lname=$_SESSION['last_name'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +26,7 @@
             <div id="hr"></div>
             <div id= "image">upload<br> image<br> here</div>
             <div id="hr"></div>
-            <h4 style="color: ghostwhite;">STORE NAME</h4>
+            <h4 style="color: ghostwhite;"><?php echo $storename?></h4>
             <div id="hr"></div>
             <a href="account.html" ><div id="link" class="link">Profile</div></a>
             <a href="pos.html" ><div id="link">Point-Of-Sales</div></a>
@@ -74,32 +84,39 @@
 
         <div id="table">
             <div id="table_view">
-                <table>
+            <table>
                     <tr>
-                        <th>Product</th>
-                        <th>Stock</th>
-                        <th>Capital Price</th>
+                        <th>Item Name</th>
+                        <th>Stock</th> 
+                        <th>Capital</th>
                         <th>Selling Price</th>
                         <th>Date Modified</th>
-                        <th>Update</th>
+                        <th>Add Stock</th>
+                        <th>Update Item</th>
                     </tr>
-                    <tr>
-                        <td><center>Pencil</center></td>
-                        <td><center>5</center></td>
-                        <td><center>5.00</center></td>
-                        <td><center>6.00</center></td>
-                        <td><center>2019-03-05</center></td>
-                        <td><center><button id="stock">Add</button> | <button id="stock">Update</button></center></td>
-                    </tr>
+                    <?php
+                        $user = 'root';
+                        $pass = '';
+                        $db = 'e_tinda';
+                       // $storename = 'basaan ni ethan';
+                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                        $sql = "select itemid,itemName, stock, capital, sellingPrice, dateModified from `$storename`";
+                        $result = $db->query($sql);
 
-                    <tr>
-                        <td><center>Pencil</center></td>
-                        <td><center>5</center></td>
-                        <td><center>5.00</center></td>
-                        <td><center>6.00</center></td>
-                        <td><center>2019-03-05</center></td>
-                        <td><center><button id="stock">Add</button> | <button id="stock">Update</button></center></td>
-                    </tr>
+
+                        if($result->num_rows >0){
+                            while($row = $result->fetch_assoc()){
+                            echo '<tr><td><center>' .$row["itemName"]. '</center></td>';
+                            echo '<td><center>' .$row["stock"]. '</center></td>';
+                            echo '<td><center><div contenteditable>' .$row["capital"]. '</div></center></td>';
+                            echo '<td><center><div contenteditable>' .$row["sellingPrice"]. '</div> </center></td>';
+                            echo '<td><center>' .$row["dateModified"]. '</center></td>';
+                            echo "<td><a href=\"addItemStock.php?id=".$row['itemid']."\">ADD</a></td>";
+                            // echo '<td><center><button id="stock">ADD</button></center></td></center></td>';
+                            echo '<td><center><button id="stock">UPDATE</button></center></td></center></td></tr>';
+                            }
+                        }
+                    ?>
                 </table>
             </div>
             <div id="add">
