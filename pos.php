@@ -25,12 +25,12 @@ $lname=$_SESSION['last_name'];
                     <div id="hr"></div>
                     <div id= "image">upload<br> image<br> here</div>
                     <div id="hr"></div>
-                    <h4 style="color: ghostwhite;"><?php $storename;?></h4>
+                    <h4 style="color: ghostwhite;"><?php echo $storename;?></h4>
                     <div id="hr"></div>
                     <a href="account.html" ><div id="link" class="link">Profile</div></a>
                     <a href="pos.html" ><div id="link"><h5>Point-Of-Sales</h5></div></a>
                     <div id="hr"></div>
-                    <a href="inventory.html" ><div id="link">Inventory</div></a>
+                    <a href="inventory.php" ><div id="link">Inventory</div></a>
                     <a href="index.html" ><div id="link">Logout</div></a> 
                 
                 </center>
