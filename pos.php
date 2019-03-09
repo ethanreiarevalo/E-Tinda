@@ -87,7 +87,7 @@ $lname=$_SESSION['last_name'];
                                 <th>ITEM</th>
                                 <th>SELLING PRICE</th>
                             </tr>
-                    <?php
+                    <!-- <?php
                         $user = 'root';
                         $pass = '';
                         $db = 'e_tinda';
@@ -104,7 +104,7 @@ $lname=$_SESSION['last_name'];
                             echo '<td><center>' .$row["sellingPrice"]. '</center></td>';
                             }
                         }
-                    ?>
+                    ?> -->
                         </table>
                     </center>
                 </div>
