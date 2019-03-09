@@ -115,12 +115,7 @@ $lname=$_SESSION['last_name'];
                             echo '<td><center><div contenteditable>' .$row["capital"]. '</div></center></td>';
                             echo '<td><center><div contenteditable>' .$row["sellingPrice"]. '</div> </center></td>';
                             echo '<td><center>' .$row["dateModified"]. '</center></td>';
-                            // echo "<td><a href=\"addItemStock.php?id=".$row['itemid']."\">ADD</a></td>";
-                             echo '<td><center><button id="myBtn" >ADD</button></td></center></td>';
-                           // echo '<td><form action="addItemStock.php" method="POST" ><center>
-                            //<input type="hidden" name="rowName" value='.$row['itemName'].'/>
-                            //<button id="stock" onclick="document.getElementById("modal_wrapper").style.display="block"">ADD</button></center></form></td>';
-                            echo '<td><center><button id="stock">UPDATE</button></center></td></center></td></tr>';
+                           
                             }
                         }
                        

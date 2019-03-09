@@ -65,11 +65,11 @@ $lname=$_SESSION['last_name'];
 
                         if($result->num_rows >0){
                             while($row = $result->fetch_assoc()){
-                            echo '<tr><td><center>' .$row["itemName"]. '</center></td>';
+                            echo '<tr ><td><center>' .$row["itemName"]. '</center></td>';
                             echo '<td><center>' .$row["stock"]. '</center></td>';
                             echo '<td><center><div contenteditable>' .$row["capital"]. '</div></center></td>';
                             echo '<td><center><div contenteditable>' .$row["sellingPrice"]. '</div> </center></td>';
-                            echo '<td><center>' .$row["dateModified"]. '</center></td>';
+                            echo '<td><center>' .$row["dateModified"]. '</center></td></tr>';
                             }
                         }
                     ?>
