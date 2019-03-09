@@ -22,7 +22,7 @@ $lname = $_SESSION['last_name'];
         <div id=navigator>
             <div id="welcome">Welcome <?php echo $fname; echo" "; echo "$lname";?> !</div>
             <ul>
-                <li><a href="index.php" action="logout.php" method = "post">Logout</a></li>
+                <li><a href="logout.php" action="logout.php" method = "post">Logout</a></li>
             </ul>
         </div>
 

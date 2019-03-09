@@ -40,26 +40,82 @@ $hidden_password = preg_replace("|.|","*",$password);
                 
         </div>
 
+        <div id="user_popup" class="myForm">
+            <center>
+                    <form action="accountUpdate.php" id="form">
+                        <h2 style="display:inline;">Update Your Account</h2>
+                        <button style="margin-left:5%; border: none;" onclick="closeForm()">X</button>
+                        <input type="text" value="<?php echo $username?>">
+                        <input type="text" value="<?php echo $password?>">
+                        <input type="text" style="display:block;" value="<?php echo $email?>">
+                        <button>Submit</button>
+                       
+                        </form>
+            </center>
+        </div>
+
         <div id="manage">
 
             <div id="profile">
                 <div id="pro">
-                <h2>Your Profile</h2>
-                <h3>Username</h3>
-                <h4><?php echo $username?></h4>
-                <h3>Password</h3>
-                <h4><?php echo $hidden_password?></h4>
-                <h3>Email</h3>
-                <h4><?php echo $email?></h4>
-                <h3>Store Name</h3>
-                <h4><?php echo $storename?></h4>
-                <h3>Name</h3>
-                <h4><?php echo $fname." ".$lname?></h4>
+                    <h2>Your Profile</h2>
+                    <h3>Username</h3>
+                    <h4><?php echo $username?></h4>
+
+                    <h3>Password</h3>
+                    <h4><?php echo $hidden_password?></h4>
+                    <div id="form_popup"></div>
+
+                    <h3>Email</h3>
+                    <h4><?php echo $email?></h4>
+                    <div id="form_popup"></div>
+
+                    <h3>Store Name</h3>
+                    <h4><?php echo $storename?></h4>
+                    <div id="form_popup"></div>
+
+                    <h3>Name</h3>
+                    <h4><?php echo $fname." ".$lname?></h4>
+
+                    <button onclick = "openForm()">Edit Your Profile</button>
+                   
+                        
                 </div>
+
             </div>
+            
 
-            <div id="container"></div>
 
+
+            <div id="container">
+                    
+
+                    <div id="delete">
+                        <h2>Delete Your Acount?</h2>
+                        <button style="background:red; border: 1px solid red; color: white;">Delete Account</button>
+                        <br><br>
+                        <h2>Found some Errors?</h2>
+                        <button id="toadmin">Report to the Admin</button>
+                   
+                   </div>
+
+                   
+                       
+
+                   
+            </div>          
         </div>
+
+        
+
+        <script>
+function openForm() {
+  document.getElementById("user_popup").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("user_popup").style.display = "none";
+}
+</script>
 </body>
 </html>

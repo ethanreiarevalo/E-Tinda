@@ -66,7 +66,7 @@ li{
 #manage{
     display: grid;
     grid-template-columns: 50% 50%;
-    background-color: rebeccapurple;
+    grid-gap: 2%;
 }
 #profile{
     
@@ -78,7 +78,49 @@ li{
     border: 1px solid #0b132b;
     width: 80%;
     padding: 5%;
+    box-sizing: border-box;
+    border-radius:5px;
 }
 #container{
-   background-color: #0b132b;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
 }
+button{
+    background: transparent;
+    border: 1px solid #0b132b;
+    cursor: pointer;
+    padding: 3%;
+}
+
+/* The popup form - hidden by default */
+.myForm {
+    display: none;
+    position: fixed;
+    top: 35%;
+    left: 45%;
+    border: 3px solid #f1f1f1;
+    height: 30vh;
+    width: 20%;
+    color:black;
+    
+  }
+  /* Add styles to the form container */
+#form {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+    display: block;
+    border: 1px solid #0b132b;
+    color: black;
+  }
+  input{
+      margin:3%;
+      box-sizing: border-box;
+      padding: 3%;
+      border-radius: 1px solid #0b132b;
+
+  }
+
+ 
+  

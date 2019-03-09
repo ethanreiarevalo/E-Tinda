@@ -26,6 +26,17 @@
                 </form>
               </div>
         </div>
+
+        <script>
+            var user = document.getElementById("login_input");
+
+            if(user == ""){
+                alert("please fill out the fields...");
+            }
+        
+        </script>
+
+
          <!--Contents-->   
         <div id="content1">
             <div id="imageholder">

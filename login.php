@@ -40,7 +40,7 @@ $row = mysqli_fetch_array($result);
         $_SESSION['first_name'] = $fname;
         $_SESSION['last_name'] = $lname;
         $_SESSION['email'] = $email;
-        header("location:inventory.php");
+        header("location:admin.php");
     }else{
         
         print("<script type = text/javascript>alert('Login Unsuccessful...');</script>") ;
