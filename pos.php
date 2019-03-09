@@ -80,7 +80,33 @@ $lname=$_SESSION['last_name'];
             <div id="cashier">
 
                 <div id="list">
-                    <center></center>
+                    <center>
+                        <table>
+                            <tr>
+                                <th>QUANTITY</th>
+                                <th>ITEM</th>
+                                <th>SELLING PRICE</th>
+                            </tr>
+                    <?php
+                        $user = 'root';
+                        $pass = '';
+                        $db = 'e_tinda';
+                        $postblname = $storename."_POS";
+                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                        $sql = "select transactionDescription, transactionQuantity, sellingPrice from `$postblname`";
+                        $result = $db->query($sql);
+
+
+                        if($result->num_rows >0){
+                            while($row = $result->fetch_assoc()){
+                            echo '<tr><td><center>' .$row["transactionDescription"]. '</center></td>';
+                            echo '<td><center>' .$row["transactionQuantity"]. '</center></td>';
+                            echo '<td><center>' .$row["sellingPrice"]. '</center></td>';
+                            }
+                        }
+                    ?>
+                        </table>
+                    </center>
                 </div>
                 <div id="total">
                     <center>
@@ -99,7 +125,9 @@ $lname=$_SESSION['last_name'];
                         
                                 <h1>P 5000.00</h1>
                                     
-                                <p>March 4, 2019</p>
+                                <p><?php 
+                                    echo date('d-F-Y');
+                                ?></p>
                             </center>
                             
                         </div>
@@ -118,7 +146,9 @@ $lname=$_SESSION['last_name'];
                                     
                                     <h1>P 5000.00</h1>
                                                 
-                                    <p>March</p>
+                                    <p><?php 
+                                        echo date('F');
+                                    ?></p>
                                 </center>
                         </div>
                         <div id="report">
@@ -127,7 +157,9 @@ $lname=$_SESSION['last_name'];
                                 
                                     <h1>P 5000.00</h1>
                                             
-                                    <p>2019</p>
+                                    <p><?php 
+                                        echo date('Y');
+                                    ?></p>
                                 </center>
                         </div>
             
