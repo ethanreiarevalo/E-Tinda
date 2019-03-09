@@ -112,6 +112,7 @@ $lname=$_SESSION['last_name'];
                     <center>
                         <h3 style="margin: 0%;margin-top: 3%; padding: 0%;">Total</h3>
                         <h1 style="margin: 0;">P5000</h1>
+                        <button id="addbtn">AddItem</button>
                     </center>
                 </div>
             </div>
@@ -168,5 +169,56 @@ $lname=$_SESSION['last_name'];
             </div>
 
     </div>
+
+
+
+
+
+    <!--modal-->
+    <div id="searchmodal" class="modal">
+
+<!-- Modal content -->
+<div class="modal-content">
+  <span class="closex">&times;</span>
+    <center><h3>Update</h3>
+    <select name ="product" placeholder="Product Name" style="width:70%; padding:2%; margin:3%;">
+        <option value="">Put php code here</option>
+    </select>
+    <input type="number" placeholder="Quantity" style="width:70%; padding:2%; margin:3%;">
+   
+    <button id = "modalbutton">Add Product</button>
+    </center>
+</div>
+
+</div>
+
+<script>
+ //---------Modal script of search
+
+var searchmodal = document.getElementById('searchmodal');
+
+// Get the button that opens the modal
+var btns = document.getElementById("addbtn");
+
+// Get the <span> element that closes the modal
+var spans = document.getElementsByClassName("closex")[0];
+
+// When the user clicks the button, open the modal 
+btns.onclick = function() {
+  searchmodal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+spans.onclick = function() {
+  searchmodal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == searchmodal) {
+    searchmodal.style.display = "none";
+  }
+}
+</script>
 </body>
 </html>
