@@ -116,7 +116,7 @@ $lname=$_SESSION['last_name'];
                             echo '<td><center><div contenteditable>' .$row["sellingPrice"]. '</div> </center></td>';
                             echo '<td><center>' .$row["dateModified"]. '</center></td>';
                             // echo "<td><a href=\"addItemStock.php?id=".$row['itemid']."\">ADD</a></td>";
-                             echo '<td><center><button id="stock" >ADD</button></td></center></td>';
+                             echo '<td><center><button id="myBtn" >ADD</button></td></center></td>';
                            // echo '<td><form action="addItemStock.php" method="POST" ><center>
                             //<input type="hidden" name="rowName" value='.$row['itemName'].'/>
                             //<button id="stock" onclick="document.getElementById("modal_wrapper").style.display="block"">ADD</button></center></form></td>';
@@ -131,38 +131,51 @@ $lname=$_SESSION['last_name'];
             <!-- Modal -->
 
 
-<h1>Pure CSS modal box</h1>
-<div>
-  <p>You can place trigger button wherever you want.</p>
-  <p>
-    <label class="btn" for="modal-1">Show me modal with a cat</label>
-    <label class="btn btn--blue" for="modal-2">Click for more AWW</label>
-  </p>
+<div id="myModal" class="modal">
+
+<!-- Modal content -->
+<div class="modal-content">
+  <span class="close">&times;</span>
+    <center><h3>Update</h3>
+    <input type="text" placeholder="Product Name" style="width:70%; padding:2%; margin:3%;">
+    <input type="number" placeholder="Stock" style="width:70%; padding:2%; margin:3%;">
+    <input type="number" step="0.01" placeholder="Capital Price" style="width:70%; padding:2%; margin:3%;">
+    <input type="number" step="0.01" placeholder="Selling Price" style="width:70%; padding:2%; margin:3%;">
+    <button id = "modalbutton">Update</button>
+    </center>
 </div>
 
-
-<input class="modal-state" id="modal-1" type="checkbox" />
-<div class="modal">
-  <label class="modal__bg" for="modal-1"></label>
-  <div class="modal__inner">
-    <label class="modal__close" for="modal-1"></label>
-    <h2>Caaaats FTW!</h2>
-    <p><img src="https://i.imgur.com/HnrkBwB.gif" alt="" />Aliquam in sagittis nulla. Curabitur euismod diam eget risus venenatis, sed dictum lectus bibendum. Nunc nunc nisi, hendrerit eget nisi id, rhoncus rutrum velit. Nunc vel mauris dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam fringilla quis nisi eget imperdiet.</p>
-  </div>
-</div>
-
-<input class="modal-state" id="modal-2" type="checkbox" />
-<div class="modal">
-  <label class="modal__bg" for="modal-2"></label>
-  <div class="modal__inner">
-    <label class="modal__close" for="modal-2"></label>
-    <h2>Sleppy sloth</h2>
-    <p><img src="https://i.imgur.com/TPx9zYo.gif" alt="" />Aliquam in sagittis nulla. Curabitur euismod diam eget risus venenatis, sed dictum lectus bibendum. Nunc nunc nisi, hendrerit eget nisi id, rhoncus rutrum velit. Nunc vel mauris dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam fringilla quis nisi eget imperdiet.</p>
-  </div>
 </div>
 
 
 
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 
 
 <!-- /Modal -->
