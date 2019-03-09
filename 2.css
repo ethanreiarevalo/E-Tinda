@@ -159,7 +159,7 @@ tr:nth-child(even){
     align-items: center;
 }
 
-input{
+input, select{
     display: block;
     box-sizing: border-box;
     padding: 6%;
@@ -217,6 +217,21 @@ input{
   
   .close:hover,
   .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* The Close Button search */
+  .closex {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .closex:hover,
+  .closex:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

@@ -124,16 +124,34 @@ $lname=$_SESSION['last_name'];
                      
                 </table>
                 
-            <!-- Modal -->
 
 
-<div id="myModal" class="modal">
+            </div>
+
+
+            
+            <div id="add">
+                
+                <div id="search_container">
+                    <div id="search">
+                        <label for="">Search Product</label>
+                        <input type="text" placeholder="search" style="padding: 5%;">
+                        <button id="searchbtn">Search</button>
+                    </div>
+                </div>
+
+    <!-- Modal Search-->
+
+
+<div id="searchmodal" class="modal">
 
 <!-- Modal content -->
 <div class="modal-content">
-  <span class="close">&times;</span>
+  <span class="closex">&times;</span>
     <center><h3>Update</h3>
-    <input type="text" placeholder="Product Name" style="width:70%; padding:2%; margin:3%;">
+    <select name ="product" placeholder="Product Name" style="width:70%; padding:2%; margin:3%;">
+        <option value="">Put php code here</option>
+    </select>
     <input type="number" placeholder="Stock" style="width:70%; padding:2%; margin:3%;">
     <input type="number" step="0.01" placeholder="Capital Price" style="width:70%; padding:2%; margin:3%;">
     <input type="number" step="0.01" placeholder="Selling Price" style="width:70%; padding:2%; margin:3%;">
@@ -143,52 +161,36 @@ $lname=$_SESSION['last_name'];
 
 </div>
 
-
-
 <script>
-// Get the modal
-var modal = document.getElementById('myModal');
+ //---------Modal script of search
+
+var searchmodal = document.getElementById('searchmodal');
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var btns = document.getElementById("searchbtn");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var spans = document.getElementsByClassName("closex")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
+btns.onclick = function() {
+  searchmodal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+spans.onclick = function() {
+  searchmodal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == searchmodal) {
+    searchmodal.style.display = "none";
   }
 }
 </script>
 
 
-<!-- /Modal -->
-
-
-
-
-
-            </div>
-            <div id="add">
-                
-                <div id="search_container">
-                    <div id="search">
-                        <label for="">Search Product</label>
-                        <input type="text" placeholder="search" style="padding: 5%;">
-                    </div>
-                </div>
                 <div id="add_item">
                     <center>
                     <label for="">Add new Product</label>
