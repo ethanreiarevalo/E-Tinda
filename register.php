@@ -8,13 +8,14 @@ $storename =$_POST['store_name'];
 $fname =$_POST['first_name'];
 $lname =$_POST['last_name'];
 $type = "client";
+$status = "active";
 $mysql_host = 'localhost';
 $mysql_user = 'root';
 $mysql_pass = '';
 $mysql_db = 'e_tinda';
 $con = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, "e_tinda") ;
 if(mysqli_query($con,"INSERT INTO `t_account` VALUES (null,'$username','$email','$storename','$pass',
-'$fname','$lname','$type')")===true){
+'$fname','$lname','$type','$status')")===true){
 
   $sql = "CREATE TABLE IF NOT EXISTS `$storename` (
     itemid INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 

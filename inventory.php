@@ -134,9 +134,12 @@ $lname=$_SESSION['last_name'];
                 
                 <div id="search_container">
                     <div id="search">
-                        <label for="">Search Product</label>
-                        <input type="text" placeholder="search" style="padding: 5%;">
-                        <button id="searchbtn">Search</button>
+                        <label for="" style="display:block;">Update Product</label>
+                        
+                        <button class="up" id="searchbtn" style="padding: 5%; width: 100%;
+                        background:#0b132b; border: 1px solid #0b132b;
+                        box-sizing:border-box; border-radius: 5px; color: white;
+                        cursor:pointer;">Update</button>
                     </div>
                 </div>
 

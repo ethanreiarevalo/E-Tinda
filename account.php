@@ -92,7 +92,10 @@ $hidden_password = preg_replace("|.|","*",$password);
 
                     <div id="delete">
                         <h2>Delete Your Acount?</h2>
-                        <button style="background:red; border: 1px solid red; color: white;">Delete Account</button>
+                        <form action="delete.php" method="post">
+                            <button style="background:red; border: 1px solid red; color: white;" value="update">Delete Account</button>
+                        </form>
+                       
                         <br><br>
                         <h2>Found some Errors?</h2>
                         <button id="toadmin">Report to the Admin</button>

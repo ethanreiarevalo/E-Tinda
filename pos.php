@@ -108,11 +108,13 @@ $lname=$_SESSION['last_name'];
                         </table>
                     </center>
                 </div>
-                <div id="total">
+                <div id="total" style="height:15vh;">
                     <center>
                         <h3 style="margin: 0%;margin-top: 3%; padding: 0%;">Total</h3>
                         <h1 style="margin: 0;">P5000</h1>
-                        <button id="addbtn">AddItem</button>
+                        <button id="addbtn" style="padding: 2%; width: 95%;
+                        color:white; background:#0b132b;border:1px solid
+                        #0b132b; cursor:pointer; ">AddItem</button>
                     </center>
                 </div>
             </div>

@@ -16,7 +16,7 @@ $sql = "SELECT * FROM t_account where username='$username' && userpassword='$pas
 $result = mysqli_query($conn,$sql);
 $row = mysqli_fetch_array($result);
 
-    if($row["username"] == $username && $row["userpassword"] == $password && $row["type"] == "client"){
+    if($row["username"] == $username && $row["userpassword"] == $password && $row["type"] == "client" && $row["status"] == "active"){
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
         $storename = $row["store_name"];
@@ -28,7 +28,7 @@ $row = mysqli_fetch_array($result);
         $_SESSION['last_name'] = $lname;
         $_SESSION['email'] = $email;
         header("location:inventory.php");
-    }else if($row["username"] == $username && $row["userpassword"] == $password && $row["type"] == "admin"){
+    }else if($row["username"] == $username && $row["userpassword"] == $password && $row["type"] == "admin" && $row["status"] == "active"){
         
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $password;
