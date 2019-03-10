@@ -148,20 +148,39 @@ $lname=$_SESSION['last_name'];
 <!-- Modal content -->
 <div class="modal-content">
   <span class="closex">&times;</span>
-    <center><h3>Update</h3>
-    <select name ="product" placeholder="Product Name" style="width:70%; padding:2%; margin:3%;">
-        <option value="">Put php code here</option>
+    <center><h3>Update</h3><form action="itemUpdate.php" method="post">
+    <select id="item" name ="product" placeholder="Product Name" style="width:70%; padding:2%; margin:3%;">
+    <<?php
+        $user = 'root';
+        $pass = '';
+        $db = 'e_tinda';
+        $postblname = $storename."_POS";
+        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+        $sql = "SELECT * FROM `$storename`";
+        $result = $db->query($sql);if($result->num_rows >0){
+            while($row = $result->fetch_assoc()){
+                echo "<option value='".$row['itemName']."'>".$row['itemName']."</option>";
+            }
+        }
+    ?>
     </select>
-    <input type="number" placeholder="Stock" style="width:70%; padding:2%; margin:3%;">
-    <input type="number" step="0.01" placeholder="Capital Price" style="width:70%; padding:2%; margin:3%;">
-    <input type="number" step="0.01" placeholder="Selling Price" style="width:70%; padding:2%; margin:3%;">
+    <input type="number" name="stock" placeholder="Stock" value="0" style="width:70%; padding:2%; margin:3%;">
+    <input type="number" name="cPrice" step="0.01" placeholder="Capital Price" style="width:70%; padding:2%; margin:3%;">
+    <input type="number" name="sPrice" step="0.01" placeholder="Selling Price" style="width:70%; padding:2%; margin:3%;">
     <button id = "modalbutton">Update</button>
+    </form>
     </center>
 </div>
 
 </div>
 
 <script>
+
+var e = document.getElementById("item");
+
+var strUser = e.options[e.selectedIndex].text;
+
+
  //---------Modal script of search
 
 var searchmodal = document.getElementById('searchmodal');

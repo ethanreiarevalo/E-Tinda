@@ -58,9 +58,9 @@ $lname=$_SESSION['last_name'];
                         $pass = '';
                         $db = 'e_tinda';
                        
-                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                        $dba = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
                         $sql = "select itemName, stock, capital, sellingPrice, dateModified from `$storename`";
-                        $result = $db->query($sql);
+                        $result = $dba->query($sql);
 
 
                         if($result->num_rows >0){
@@ -72,6 +72,7 @@ $lname=$_SESSION['last_name'];
                             echo '<td><center>' .$row["dateModified"]. '</center></td></tr>';
                             }
                         }
+                        // mysqli_close($db);
                     ?>
                 </table>
                         
@@ -87,24 +88,24 @@ $lname=$_SESSION['last_name'];
                                 <th>ITEM</th>
                                 <th>SELLING PRICE</th>
                             </tr>
-                    <!-- <?php
+                    <?php
                         $user = 'root';
                         $pass = '';
                         $db = 'e_tinda';
-                        $postblname = $storename."_POS";
-                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
-                        $sql = "select transactionDescription, transactionQuantity, sellingPrice from `$postblname`";
-                        $result = $db->query($sql);
-
-
-                        if($result->num_rows >0){
+                        $postblname = $storename."_reciepts";
+                        $db1 = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                        $sql1 = "SELECT itemDescription, itemQuantity, (sellingPrice*itemQuantity) as quantityprice, 
+                        sum(quantityprice) as total from `$postblname`";
+                        $result2 = mysqli_query($db1, $sql1);
+                        
+                        if($result2->num_rows > 0 ){
                             while($row = $result->fetch_assoc()){
-                            echo '<tr><td><center>' .$row["transactionDescription"]. '</center></td>';
-                            echo '<td><center>' .$row["transactionQuantity"]. '</center></td>';
-                            echo '<td><center>' .$row["sellingPrice"]. '</center></td>';
+                            echo '<tr><td><center>' .$row["itemQuantity"]. '</center></td>';
+                            echo '<td><center>' .$row["itemDescription"]. '</center></td>';
+                            echo '<td><center>' .$row["quantityprice"]. '</center></td>';
                             }
                         }
-                    ?> -->
+                    ?> 
                         </table>
                     </center>
                 </div>
@@ -182,7 +183,19 @@ $lname=$_SESSION['last_name'];
   <span class="closex">&times;</span>
     <center><h3>Update</h3>
     <select name ="product" placeholder="Product Name" style="width:70%; padding:2%; margin:3%;">
-        <option value="">Put php code here</option>
+        <<?php
+        $user = 'root';
+        $pass = '';
+        $db = 'e_tinda';
+        $postblname = $storename."_POS";
+        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+        $sql = "SELECT * FROM `$storename`";
+        $result = $db->query($sql);if($result->num_rows >0){
+            while($row = $result->fetch_assoc()){
+                echo "<option value='".$row['itemName']."'>".$row['itemName']."</option>";
+            }
+        }
+    ?>
     </select>
     <input type="number" placeholder="Quantity" style="width:70%; padding:2%; margin:3%;">
    
