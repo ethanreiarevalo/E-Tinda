@@ -6,7 +6,7 @@
     <title>E-Tinda | Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="1.css" />
-    <script src="main.js"></script>
+    
 </head>
 <body>
     
@@ -37,15 +37,41 @@
         </script>
 
 
-         <!--Contents-->   
+        
         <div id="content1">
             <div id="imageholder">
+               
+                    <div id="container">
+                    <div id="slider">
+<figure>
+<img src="c_images/inventory.png" alt=>
+<img src="c_images/pos.png" alt>
+<img src="c_images/inventory.png" alt=>
+</figure>
+</div>
+
+
+
+                    </div>
+
+
+
+
+               
+
 
             </div>
 
+
+
+
+
+
+
+
             
                 <form action="register.php" id = "signform" method="post">
-                    <center><h3>Register Now!</h3></center>
+                    <center><h1>Register <br>Now!</h1></center>
                     <input id="sign" type="text" placeholder="Username" name="username">
                     <input id="sign" type="password" placeholder="Password" name="password">
                     <input id="sign" type="text" placeholder="Email" name="email">
@@ -80,7 +106,11 @@
         </div>
         <!--Footer-->
         <div id="footer">
-
+            <center style="margin-top:1.5%;">
+            ©JEC Development Team <br>
+            For more inquiries contact us at: <br>
+            JECdevteam@gmail.com | 09120012378
+            </center>
         </div>
         
     

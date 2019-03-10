@@ -162,4 +162,43 @@ li{
 #footer{
     border-top: 1px solid #0B132B;
 }
+#imageholder{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#container{
+    margin-top: 6%;
+    height: 35vh;
+    width: 65%;
+    background: #5BC0BE;
+}
 
+/*******/
+
+@keyframes slidy {
+    0% { left: 0%; }
+    20% { left: 0%; }
+    25% { left: -100%; }
+    45% { left: -100%; }
+    50% { left: -100%; }
+    70% { left: -100%; }
+    75% { left: -200%; }
+    95% { left: -200%; }
+    100% { left: -200%; }
+    }
+    
+    body { margin: 0; } 
+    div#slider { overflow: hidden; }
+    div#slider figure img { width: 20%; float: left; }
+    div#slider figure { 
+      position: relative;
+      width: 500%;
+      margin: 0;
+      left: 0;
+      text-align: left;
+      font-size: 0;
+      animation: 20s slidy infinite; 
+    }
+    
