@@ -85,9 +85,11 @@
         
         <div id="content2">
             <ul>
-                <li><h3>Manage Your Stocks</h3></li>
-                <li><h3>Sales Report</h3></li>
-                <li><h3>Point-of-sales system</h3></li>
+                <li><div style="display:inline; font-size:large;"><img src="c_images/delivery.png"><strong>  | Manage Your Stocks</strong></div></li><br>
+                <li><div style="display:inline; font-size:large;"><img src="c_images/budget.png"><strong>  | Point-of sales System</strong></div></li><br>
+                <li><div style="display:inline; font-size:large;"><img src="c_images/news-report.png"><strong>  | Sales Report</strong></div></li>
+                
+                
             </ul>
             <div id="about">
             <h2 style="margin-top: 12%;">About E-Tinda</h2>
