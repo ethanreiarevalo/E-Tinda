@@ -28,13 +28,15 @@ $lname=$_SESSION['last_name'];
             <div id="hr"></div>
             <h4 style="color: ghostwhite;"><?php echo $storename?></h4>
             <div id="hr"></div>
-            <a href="account.php" ><div id="link" class="link">Profile</div></a>
+            <a id = "dashlink" href="account.php" ><div id="link" class="link">Profile</div></a>
             
-            <a href="pos.php" >
+            <a id = "dashlink" href="pos.php" >
             <div id="link">Point-Of-Sales</div></a>
-            <a href="inventory.php" ><div id="link"><h5>Inventory</h5></div></a>
+            <a id = "dashlink" href="inventory.php" ><div id="link"><h5>Inventory</h5></div></a>
             <div id="hr"></div>
-            <a href="logout.php" ><div id="link">Logout</div></a> 
+            <a id = "dashlink" href="sale_report.php" ><div id="link">Reports</div></a>
+            
+            <a id = "dashlink" href="logout.php" ><div id="link">Logout</div></a> 
         
         </center>
         
@@ -44,8 +46,10 @@ $lname=$_SESSION['last_name'];
     <div id="inventory">
 
         <div id="sales">
-            <div id="report">
-                <center>
+          
+           <div id="report">
+               <a href="sale_report.php">
+               <center>
                     <h2 style="display: block;">Daily sales</h2>
             
                     <h1>P 5000.00</h1>
@@ -54,19 +58,26 @@ $lname=$_SESSION['last_name'];
                     echo date('d-F-Y');
                     ?></p>
                 </center>
-                
+               </a>
+   
             </div>
+           
             <div id="report">
-                    <center>
+                <a href="sale_report.php">
+                <center>
                         <h2 style="display: block;">Weekly Sales</h2>
                     
                         <h1>P 5000.00</h1>
                                 
                         <p>March 4-10</p>
                     </center>
+                </a>
+                   
             </div>
+
             <div id="report">
-                    <center>
+                <a href="sale_report.php">
+                <center>
                         <h2 style="display: block;">Monthly Sales</h2>
                         
                         <h1>P 5000.00</h1>
@@ -75,9 +86,13 @@ $lname=$_SESSION['last_name'];
                             echo date('F');
                         ?></p>
                     </center>
+                </a>
+                    
             </div>
             <div id="report">
-                    <center>
+                <a href="sale_report.php">
+                    
+                <center>
                         <h2 style="display: block;">Annual Sales</h2>
                     
                         <h1>P 5000.00</h1>
@@ -86,6 +101,7 @@ $lname=$_SESSION['last_name'];
                         echo date('Y');
                         ?></p>
                     </center>
+                </a>
             </div>
 
         </div>
@@ -94,9 +110,9 @@ $lname=$_SESSION['last_name'];
             <div id="table_view">
             <table>
                     <tr>
-                        <th>Item Name</th>
+                        <th>Product</th>
                         <th>Stock</th> 
-                        <th>Capital</th>
+                        <th>Capital Price</th>
                         <th>Selling Price</th>
                         <th>Date Modified</th>
                     </tr>
@@ -160,15 +176,19 @@ $lname=$_SESSION['last_name'];
         $postblname = $storename."_POS";
         $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
         $sql = "SELECT * FROM `$storename`";
-        $result = $db->query($sql);if($result->num_rows >0){
+        $result = $db->query($sql);
+        if($result->num_rows >0){
             while($row = $result->fetch_assoc()){
                 echo "<option value='".$row['itemName']."'>".$row['itemName']."</option>";
+                $value = "<option value='".$row['itemName']."'>".$row['itemName']."</option>";
+                
             }
+                
         }
     ?>
     </select>
-    <input type="number" name="stock" placeholder="Stock" value="0" style="width:70%; padding:2%; margin:3%;">
-    <input type="number" name="cPrice" step="0.01" placeholder="Capital Price" style="width:70%; padding:2%; margin:3%;">
+    
+    <input type='number' name='cPrice' step='0.01' value='$value' style='width:70%; padding:2%; margin:3%;' >
     <input type="number" name="sPrice" step="0.01" placeholder="Selling Price" style="width:70%; padding:2%; margin:3%;">
     <button id = "modalbutton">Update</button>
     </form>
