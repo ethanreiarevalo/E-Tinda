@@ -39,7 +39,7 @@ $lname = $_SESSION['last_name'];
                     <th>Store Name</th>
                     <th>Password</th>
                     <th>Name</th>
-                    <th>Delete</th>
+                    <th>Status</th>
                 </tr>
                 <?php
                         $user = 'root';
@@ -48,7 +48,7 @@ $lname = $_SESSION['last_name'];
                         $type = 'type';
                       
                         $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
-                        $sql = "SELECT username, email, store_name, userpassword, first_name, last_name from t_account where $type = 'client'";
+                        $sql = "SELECT username, email, store_name, userpassword, first_name, last_name, `status` from t_account where $type = 'client'";
                         $result = $db->query($sql);
 
 
@@ -59,7 +59,7 @@ $lname = $_SESSION['last_name'];
                             echo '<td><center>' .$row["store_name"]. '</center></td>';
                             echo '<td><center>' .$row["userpassword"]. '</center></td>';
                             echo '<td><center>' .$row["first_name"]." ".$row['last_name']. '</center></td>';
-                            echo '<td><center><button>DELETE</button></center></td></tr>';
+                            echo '<td><center>' .$row["status"]. '</center></td>';
                             }
                         }
                     ?>

@@ -223,8 +223,80 @@ window.onclick = function(event) {
                         <input type="number"  step = "0.01"placeholder="Selling Price" name="sellingprice">
                         <button id="addButton">Add Product</button>
                     </form>
+                    <button id="addStock">Add Stock</button>
                     </center>
                 </div>
+
+
+
+
+    <!-- Modal Search-->
+
+
+<div id="stockmodal" class="modal">
+
+<!-- Modal content -->
+<div class="modal-content">
+  <span class="closey">&times;</span>
+    <center><h3>Update</h3><form action="itemUpdate.php" method="post">
+    <select id="item" name ="product" placeholder="Product Name" style="width:70%; padding:2%; margin:3%;">
+    <<?php
+        $user = 'root';
+        $pass = '';
+        $db = 'e_tinda';
+        $postblname = $storename."_POS";
+        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+        $sql = "SELECT * FROM `$storename`";
+        $result = $db->query($sql);if($result->num_rows >0){
+            while($row = $result->fetch_assoc()){
+                echo "<option value='".$row['itemName']."'>".$row['itemName']."</option>";
+            }
+        }
+    ?>
+    </select>
+    <input type="number" name="stock" placeholder="Stock" value="0" style="width:70%; padding:2%; margin:3%;">
+    
+    <button id = "modalbutton">Update</button>
+    </form>
+    </center>
+</div>
+
+</div>
+
+<script>
+
+var e = document.getElementById("item");
+
+var strUser = e.options[e.selectedIndex].text;
+
+
+ //---------Modal script of search
+
+var stockmodal = document.getElementById('stockmodal');
+
+// Get the button that opens the modal
+var button = document.getElementById("addStock");
+
+// Get the <span> element that closes the modal
+var spansx = document.getElementsByClassName("closey")[0];
+
+// When the user clicks the button, open the modal 
+button.onclick = function() {
+  stockmodal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+spansx.onclick = function() {
+  stockmodal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == searchmodal) {
+    stockmodal.style.display = "none";
+  }
+}
+</script>
             </div>
         </div>
     </div>

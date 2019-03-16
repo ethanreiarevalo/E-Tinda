@@ -21,8 +21,8 @@ if(mysqli_query($con,"INSERT INTO `t_account` VALUES (null,'$username','$email',
     itemid INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
     itemName VARCHAR(30) NOT NULL,
     stock int(10) NOT NULL,
-    capital float(10),
-    sellingPrice float(10),
+    capital DECIMAL(6,2),
+    sellingPrice DECIMAL(6,2),
     dateModified DATE
     )";
     if ($con->query($sql) === TRUE) {
@@ -31,8 +31,8 @@ if(mysqli_query($con,"INSERT INTO `t_account` VALUES (null,'$username','$email',
         transactionID INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
         transactinonDescription VARCHAR(30) NOT NULL,
         transactionQuantity INT(10),
-        capital float(10,2),
-        sellingPrice float(10,2),
+        capital DECIMAL(6,2),
+        sellingPrice DECIMAL(6,2),
         dateModified DATE
         )";
         if ($con->query($sql2) === TRUE) {
