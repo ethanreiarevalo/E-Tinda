@@ -47,33 +47,12 @@ $lname=$_SESSION['last_name'];
                     
             <table>
                     <tr>
-                        <th>Item Name</th>
-                        <th>Stock</th> 
-                        <th>Capital</th>
-                        <th>Selling Price</th>
-                        <th>Date Modified</th>
+                        <th>Product</th>
+                        <th>Quantity</th> 
+                        <th>unit Price</th>
+                        
                     </tr>
-                    <?php
-                        $user = 'root';
-                        $pass = '';
-                        $db = 'e_tinda';
-                       
-                        $dba = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
-                        $sql = "select itemName, stock, capital, sellingPrice, dateModified from `$storename`";
-                        $result = $dba->query($sql);
-
-
-                        if($result->num_rows >0){
-                            while($row = $result->fetch_assoc()){
-                            echo '<tr ><td><center>' .$row["itemName"]. '</center></td>';
-                            echo '<td><center>' .$row["stock"]. '</center></td>';
-                            echo '<td><center><div contenteditable>' .$row["capital"]. '</div></center></td>';
-                            echo '<td><center><div contenteditable>' .$row["sellingPrice"]. '</div> </center></td>';
-                            echo '<td><center>' .$row["dateModified"]. '</center></td></tr>';
-                            }
-                        }
-                        // mysqli_close($db);
-                    ?>
+                   
                 </table>
                         
             </div>
@@ -82,40 +61,29 @@ $lname=$_SESSION['last_name'];
 
                 <div id="list">
                     <center>
-                        <table>
-                            <tr>
-                                <th>QUANTITY</th>
-                                <th>ITEM</th>
-                                <th>SELLING PRICE</th>
-                            </tr>
-                    <?php
-                        $user = 'root';
-                        $pass = '';
-                        $db = 'e_tinda';
-                        $postblname = $storename."_reciepts";
-                        $db1 = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
-                        $sql1 = "SELECT itemDescription, itemQuantity, (sellingPrice*itemQuantity) as quantityprice, 
-                        sum(quantityprice) as total from `$postblname`";
-                        $result2 = mysqli_query($db1, $sql1);
-                        
-                        if($result2->num_rows > 0 ){
-                            while($row = $result->fetch_assoc()){
-                            echo '<tr><td><center>' .$row["itemQuantity"]. '</center></td>';
-                            echo '<td><center>' .$row["itemDescription"]. '</center></td>';
-                            echo '<td><center>' .$row["quantityprice"]. '</center></td>';
-                            }
-                        }
-                    ?> 
-                        </table>
+                        <button id="addbtn" style="padding: 2%; width: 95%;
+                        color:white; background:#0b132b;border:1px solid
+                        #0b132b; cursor:pointer; margin-top: 20%;">Add Product</button>
+
+                        <button id="addbtn" style="padding: 2%; width: 95%;
+                        color:white; background:#0b132b;border:1px solid
+                        #0b132b; cursor:pointer; margin-top: 5%;">Remove Product</button>
+
+                        <button id="cancel_tran" style="padding: 2%; width: 95%;
+                        color:white; background:#0b132b;border:1px solid
+                        #0b132b; cursor:pointer; margin-top: 5%;">Cancel Transaction</button>
+
+                        <button id="addbtn" style="padding: 2%; width: 95%;
+                        color:white; background:#0b132b;border:1px solid
+                        #0b132b; cursor:pointer; margin-top: 5%;">Check Out</button>
+
                     </center>
                 </div>
                 <div id="total" style="height:15vh;">
                     <center>
                         <h3 style="margin: 0%;margin-top: 3%; padding: 0%;">Total</h3>
                         <h1 style="margin: 0;">P5000</h1>
-                        <button id="addbtn" style="padding: 2%; width: 95%;
-                        color:white; background:#0b132b;border:1px solid
-                        #0b132b; cursor:pointer; ">AddItem</button>
+                        
                     </center>
                 </div>
             </div>
