@@ -26,10 +26,49 @@ $lname = $_SESSION['last_name'];
             </ul>
         </div>
 
-        <div id="tablecontainer">
+        <div id="tablecontainer" style="display:block;">
+            <center>
             
-            
-            <div id="table">
+            <div id="table" style="display:block; margin-bottom:0%;">
+            <h4 style="">Notifications</h4>
+            <hr>
+                <table>
+                <tr>
+                    <th>Username</th>
+                    <th>Store Name</th>
+                    <th>Bug description</th>
+                    <th>Date</th>
+                    
+                </tr>
+                <?php
+                        $user = 'root';
+                        $pass = '';
+                        $db = 'e_tinda';
+                        $type = 'type';
+                      
+                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                        $sql = "SELECT username, storename, document, date_send from notifications";
+                        $result = $db->query($sql);
+
+
+                        if($result->num_rows >0){
+                            while($row = $result->fetch_assoc()){
+                            echo '<tr><td><center>' .$row["username"]. '</center></td>';
+                            echo '<td><center>' .$row["storename"]. '</center></td>';
+                            echo '<td><center>' .$row["document"]. '</center></td>';
+                            echo '<td><center>' .$row["date_send"]. '</center></td>';
+
+                            }
+                        }
+                    ?>
+                </table>
+
+
+
+                
+            </div>
+
+             <div id="table" style="margin-top:0%;">
             <h4 style="">E-Tinda Clients</h4>
             <hr>
                 <table>
@@ -64,8 +103,15 @@ $lname = $_SESSION['last_name'];
                         }
                     ?>
                 </table>
+
+
+
+                
             </div>
+            </center>
         </div>
+
+        
     </div>
 </body>
 </html>
