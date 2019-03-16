@@ -182,7 +182,7 @@ $lname=$_SESSION['last_name'];
 
 <!--========================================= ADD PRODUCT FOR TRANSACTION =========================================-->
 <!-- Modal content -->
-<div class="modal-content">
+<div class="modal-content" style="height:35vh; margin-top:13%;">
   <span class="closex">&times;</span>
     <center><h3>SELECT PRODUCT</h3><form action="posprocess.php" method="post">
     <select name ="product" placeholder="Product Name" style="width:70%; padding:2%; margin:3%;">
@@ -241,7 +241,7 @@ window.onclick = function(event) {
 <!--modal-->
 <div id="removemodal" class="modal">
 <!-- Modal content -->
-<div class="modal-content">
+<div class="modal-content" style="height:25vh; margin-top:15%;">
   <span class="closer">&times;</span>
     <center><h3>SELECT PRODUCT TO REMOVE</h3><form action="posprocess.php" method="post">
     <select name ="product" placeholder="Product Name" style="width:70%; padding:2%; margin:3%;">
@@ -298,13 +298,13 @@ window.onclick = function(event) {
 </script>
 <!--========================================= CANCEL TRANSACTION =========================================-->
 <!--modal-->
-<div id="cancelmodal" class="modal">
+<div id="cancelmodal" class="modal" >
 <!-- Modal content -->
-<div class="modal-content">
+<div class="modal-content" style="height:25vh; margin-top:15%;">
   <span class="closec">&times;</span>
     <center><h3>CANCEL TRANSACTION?</h3><form action="posprocess.php" method="post">
     
-    <button id = "modalbutton" value="canceltransY" name="canceltransY">YES</button>
+    <button id = "modalbutton" value="canceltransY" name="canceltransY" style="margin-bottom:5%;">YES</button>
     <button id = "modalbutton" value="canceltransN" name="canceltransN">NO</button>
     </form>
     </center>

@@ -221,3 +221,20 @@ tr:nth-child(even){
     text-decoration: none;
     cursor: pointer;
   }
+
+
+
+#modalbutton{
+    padding:3%; 
+    width:70%; 
+    background-color: transparent; 
+    border:1px solid #5bc0eb;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+#modalbutton:hover{
+    padding:3%; 
+    width:70%; 
+    background-color: #5bc0eb; 
+    border:1px solid #5bc0eb;
+}
