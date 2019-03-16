@@ -165,7 +165,7 @@ $lname=$_SESSION['last_name'];
 
 <!--============================== UPDATE ITEM =====================================-->
 <!-- Modal content -->
-<div class="modal-content">
+<div class="modal-content" style="height: 38vh; margin-top:13%;">
   <span class="closex">&times;</span>
     <center><h3>Update</h3><form action="itemUpdate.php" method="post">
     <select id="item" name ="product" placeholder="Product Name" style="width:70%; padding:2%; margin:3%;">
@@ -243,7 +243,7 @@ window.onclick = function(event) {
                         <input type="number"  step = "0.01"placeholder="Selling Price" name="sellingprice">
                         <button id="addButton">Add Product</button>
                     </form>
-                    <button id="addStock">Add Stock</button>
+                    <button id="addStock" >Add Stock</button>
                     </center>
                 </div>
 
@@ -253,10 +253,10 @@ window.onclick = function(event) {
     <!-- Modal Search-->
 
 
-<div id="stockmodal" class="modal">
+<div id="stockmodal" class="modal" >
 <!--============================== ADD ITEM STOCK =====================================-->
 <!-- Modal content -->
-<div class="modal-content">
+<div class="modal-content" style="height: 30vh; margin-top:15%;">
   <span class="closey">&times;</span>
     <center><h3>Update</h3><form action="itemUpdate.php" method="post">
     <select id="item" name ="product" placeholder="Product Name" style="width:70%; padding:2%; margin:3%;">

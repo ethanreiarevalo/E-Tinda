@@ -39,7 +39,7 @@ html body{
     justify-content: center;
     align-items: center;
 }
-#dashlink{
+a{
     text-decoration: none;
     color: #ffffff;
 }
@@ -177,6 +177,20 @@ input, select{
     cursor: pointer;
 }
 #addButton:hover{
+    background-color: #0b132b;
+    color: #ffffff;
+}
+#addStock{
+    background: transparent;
+    border: 1px solid #0b132b;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 5%;
+    width: 100%;
+    margin-top: 5%;
+    cursor: pointer;
+}
+#addStock:hover{
     background-color: #0b132b;
     color: #ffffff;
 }

@@ -65,8 +65,8 @@ $lname=$_SESSION['last_name'];
 
                         if($result->num_rows >0){
                             while($row = $result->fetch_assoc()){
-                            echo '<tr><td><center>' .$row["itemQuantity"]. '</center></td>';
-                            echo '<td><center>' .$row["itemDescription"]. '</center></td>';
+                            echo '<tr><td><center>' .$row["itemDescription"]. '</center></td>';
+                            echo '<td><center>' .$row["itemQuantity"]. '</center></td>';
                             echo '<td><center>' .$row["quantitySellingPrice"]. '</center></td>';
                             }
                         }
@@ -112,7 +112,8 @@ $lname=$_SESSION['last_name'];
             <div id="sales">
 
                     <div id="report">
-                            <center>
+                        <a href="sale_report.php">
+                        <center>
                                 <h2 style="display: block;">Daily sales</h2>
                         
                                 <h1>P 5000.00</h1>
@@ -121,19 +122,25 @@ $lname=$_SESSION['last_name'];
                                     echo date('d-F-Y');
                                 ?></p>
                             </center>
+                        </a>
+                            
                             
                         </div>
                         <div id="report">
-                                <center>
+                            <a href="sale_report.php">
+                            <center>
                                     <h2 style="display: block;">Weekly Sales</h2>
                                 
                                     <h1>P 5000.00</h1>
                                             
                                     <p>March 4-10</p>
-                                </center>
+                            </center>
+                            </a>
+                                
                         </div>
                         <div id="report">
-                                <center>
+                            <a href="sale_report.php">
+                            <center>
                                     <h2 style="display: block;">Monthly Sales</h2>
                                     
                                     <h1>P 5000.00</h1>
@@ -141,10 +148,13 @@ $lname=$_SESSION['last_name'];
                                     <p><?php 
                                         echo date('F');
                                     ?></p>
-                                </center>
+                            </center>
+                            </a>
+                                
                         </div>
                         <div id="report">
-                                <center>
+                            <a href="sale_report.php">
+                            <center>
                                     <h2 style="display: block;">Annual Sales</h2>
                                 
                                     <h1>P 5000.00</h1>
@@ -153,6 +163,8 @@ $lname=$_SESSION['last_name'];
                                         echo date('Y');
                                     ?></p>
                                 </center>
+                            </a>
+                               
                         </div>
             
                     </div>
@@ -247,7 +259,7 @@ window.onclick = function(event) {
         }
     ?>
     </select>
-    <input type="number" placeholder="Quantity" name ="quantity" value="0" style="width:70%; padding:2%; margin:3%;">
+    
 
     <button id = "modalbutton" value="RemoveProduct" name="removeProduct">Remove Product</button>
     </form>
