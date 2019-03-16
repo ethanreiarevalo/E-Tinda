@@ -32,7 +32,8 @@ $hidden_password = preg_replace("|.|","*",$password);
                     <div id="hr"></div>
                     <a href="pos.php" ><div id="link">Point-Of-Sales</div></a>
                     <a href="inventory.php" ><div id="link">Inventory</div></a>
-                    
+                    <a id = "dashlink" href="sale_report.php" ><div id="link">Reports</div></a>
+            
                     <a href="logout.php" ><div id="link">Logout</div></a> 
                 
                 </center>
@@ -98,8 +99,11 @@ $hidden_password = preg_replace("|.|","*",$password);
                        
                         <br><br>
                         <h2>Found some Errors?</h2>
-                        <button id="toadmin">Report to the Admin</button>
-                   
+                        <form action="bug.php" method ="post">
+                            <textarea name="text" id="" cols="30" rows="10"></textarea>
+                            <button id="toadmin">Report to the Admin</button>
+                        </form>
+                        
                    </div>
 
                    
