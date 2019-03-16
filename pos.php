@@ -52,6 +52,25 @@ $lname=$_SESSION['last_name'];
                         <th>unit Price</th>
                         
                     </tr>
+                    <?php
+                        $user = 'root';
+                        $pass = '';
+                        $db = 'e_tinda';
+                        
+                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                        $sql = "select itemID,itemQuantity, itemDescription, quantitySellingPrice from `e-tinda_reciepts`";
+                        $result = $db->query($sql);
+
+
+                        if($result->num_rows >0){
+                            while($row = $result->fetch_assoc()){
+                            echo '<tr><td><center>' .$row["itemQuantity"]. '</center></td>';
+                            echo '<td><center>' .$row["itemDescription"]. '</center></td>';
+                            echo '<td><center>' .$row["quantitySellingPrice"]. '</center></td>';
+                            }
+                        }
+                       
+                    ?>
                    
                 </table>
                         
@@ -65,7 +84,7 @@ $lname=$_SESSION['last_name'];
                         color:white; background:#0b132b;border:1px solid
                         #0b132b; cursor:pointer; margin-top: 20%;">Add Product</button>
 
-                        <button id="addbtn" style="padding: 2%; width: 95%;
+                        <button id="rmvbtn" style="padding: 2%; width: 95%;
                         color:white; background:#0b132b;border:1px solid
                         #0b132b; cursor:pointer; margin-top: 5%;">Remove Product</button>
 
@@ -148,10 +167,11 @@ $lname=$_SESSION['last_name'];
     <!--modal-->
     <div id="searchmodal" class="modal">
 
+<!--========================================= ADD PRODUCT FOR TRANSACTION =========================================-->
 <!-- Modal content -->
 <div class="modal-content">
   <span class="closex">&times;</span>
-    <center><h3>Update</h3>
+    <center><h3>SELECT PRODUCT</h3><form action="posprocess.php" method="post">
     <select name ="product" placeholder="Product Name" style="width:70%; padding:2%; margin:3%;">
         <<?php
         $user = 'root';
@@ -167,9 +187,10 @@ $lname=$_SESSION['last_name'];
         }
     ?>
     </select>
-    <input type="number" placeholder="Quantity" style="width:70%; padding:2%; margin:3%;">
-   
-    <button id = "modalbutton">Add Product</button>
+    <input type="number" placeholder="Quantity" name ="quantity" value="0" style="width:70%; padding:2%; margin:3%;">
+
+    <button id = "modalbutton" value="AddProduct" name="addProduct">Add Product</button>
+    </form>
     </center>
 </div>
 
@@ -200,6 +221,109 @@ spans.onclick = function() {
 window.onclick = function(event) {
   if (event.target == searchmodal) {
     searchmodal.style.display = "none";
+  }
+}
+</script>
+<!--========================================= REMOVE PRODUCT FOR TRANSACTION =========================================-->
+<!--modal-->
+<div id="removemodal" class="modal">
+<!-- Modal content -->
+<div class="modal-content">
+  <span class="closer">&times;</span>
+    <center><h3>SELECT PRODUCT TO REMOVE</h3><form action="posprocess.php" method="post">
+    <select name ="product" placeholder="Product Name" style="width:70%; padding:2%; margin:3%;">
+        <<?php
+        $user = 'root';
+        $pass = '';
+        $db = 'e_tinda';
+        $postblname = $storename."_POS";
+        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+        $sql = "SELECT * FROM `e-tinda_reciepts`";
+        $result = $db->query($sql);if($result->num_rows >0){
+            while($row = $result->fetch_assoc()){
+                echo "<option value='".$row['itemDescription']."'>".$row['itemDescription']."</option>";
+            }
+        }
+    ?>
+    </select>
+    <input type="number" placeholder="Quantity" name ="quantity" value="0" style="width:70%; padding:2%; margin:3%;">
+
+    <button id = "modalbutton" value="RemoveProduct" name="removeProduct">Add Product</button>
+    </form>
+    </center>
+</div>
+
+</div>
+
+<script>
+ //---------Modal script of search
+
+var removemodal = document.getElementById('removemodal');
+
+// Get the button that opens the modal
+var removebtns = document.getElementById("rmvbtn");
+
+// Get the <span> element that closes the modal
+var removespans = document.getElementsByClassName("closer")[0];
+
+// When the user clicks the button, open the modal 
+removebtns.onclick = function() {
+  removemodal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+removespans.onclick = function() {
+  removemodal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == removemodal) {
+    removemodal.style.display = "none";
+  }
+}
+</script>
+<!--========================================= CANCEL TRANSACTION =========================================-->
+<!--modal-->
+<div id="cancelmodal" class="modal">
+<!-- Modal content -->
+<div class="modal-content">
+  <span class="closec">&times;</span>
+    <center><h3>CANCEL TRANSACTION?</h3><form action="posprocess.php" method="post">
+    
+    <button id = "modalbutton" value="canceltransY" name="canceltransY">YES</button>
+    <button id = "modalbutton" value="canceltransN" name="canceltransN">NO</button>
+    </form>
+    </center>
+</div>
+
+</div>
+
+<script>
+ //---------Modal script of search
+
+var cancelmodal = document.getElementById('cancelmodal');
+
+// Get the button that opens the modal
+var cancelbtns = document.getElementById("cancel_tran");
+
+// Get the <span> element that closes the modal
+var cancelspans = document.getElementsByClassName("closec")[0];
+
+// When the user clicks the button, open the modal 
+cancelbtns.onclick = function() {
+  cancelmodal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+cancelspans.onclick = function() {
+  cancelmodal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == cancelmodal) {
+    cancelmodal.style.display = "none";
   }
 }
 </script>

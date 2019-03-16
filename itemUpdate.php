@@ -16,14 +16,29 @@ $Today=date('Y-m-d');
 
 
 $con = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, "e_tinda") ;
-$sql = "UPDATE `$storename` set stock = stock + $updateStock, capital = $updatecPrice, sellingPrice = $updatesPrice,
-dateModified = '$Today' where itemName = '$updateItem'";
 
-if(mysqli_query($con,$sql)===true){
-    header("refresh:0;url=inventory.php");
-} else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($con);
+if(isset($_POST["update"])){
+    $sql = "UPDATE `$storename` set  capital = $updatecPrice, sellingPrice = $updatesPrice,
+    dateModified = '$Today' where itemName = '$updateItem'";
+    
+    if(mysqli_query($con,$sql)===true){
+        header("refresh:0;url=inventory.php");
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    }
+    
+    mysqli_close($con);
+
+}else if(isset($_POST["add"])){
+    $sql = "UPDATE `$storename` set stock = stock + $updateStock, dateModified = '$Today' where itemName = '$updateItem'";
+
+    if(mysqli_query($con,$sql)===true){
+        header("refresh:0;url=inventory.php");
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    }
+
+    mysqli_close($con);
 }
 
-mysqli_close($con);
 ?>

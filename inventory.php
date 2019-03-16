@@ -104,7 +104,6 @@ $lname=$_SESSION['last_name'];
                         $user = 'root';
                         $pass = '';
                         $db = 'e_tinda';
-                       // $storename = 'basaan ni ethan';
                         $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
                         $sql = "select itemid,itemName, stock, capital, sellingPrice, dateModified from `$storename`";
                         $result = $db->query($sql);
@@ -148,6 +147,7 @@ $lname=$_SESSION['last_name'];
 
 <div id="searchmodal" class="modal">
 
+<!--============================== UPDATE ITEM =====================================-->
 <!-- Modal content -->
 <div class="modal-content">
   <span class="closex">&times;</span>
@@ -170,7 +170,7 @@ $lname=$_SESSION['last_name'];
     <input type="number" name="stock" placeholder="Stock" value="0" style="width:70%; padding:2%; margin:3%;">
     <input type="number" name="cPrice" step="0.01" placeholder="Capital Price" style="width:70%; padding:2%; margin:3%;">
     <input type="number" name="sPrice" step="0.01" placeholder="Selling Price" style="width:70%; padding:2%; margin:3%;">
-    <button id = "modalbutton">Update</button>
+    <button id = "modalbutton" value="Update" name="update">Update</button>
     </form>
     </center>
 </div>
@@ -234,7 +234,7 @@ window.onclick = function(event) {
 
 
 <div id="stockmodal" class="modal">
-
+<!--============================== ADD ITEM STOCK =====================================-->
 <!-- Modal content -->
 <div class="modal-content">
   <span class="closey">&times;</span>
@@ -256,7 +256,7 @@ window.onclick = function(event) {
     </select>
     <input type="number" name="stock" placeholder="Stock" value="0" style="width:70%; padding:2%; margin:3%;">
     
-    <button id = "modalbutton">Update</button>
+    <button id = "modalbutton" value="Add" name="add">Update</button>
     </form>
     </center>
 </div>
