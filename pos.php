@@ -93,7 +93,7 @@ $lname=$_SESSION['last_name'];
                         color:white; background:#0b132b;border:1px solid
                         #0b132b; cursor:pointer; margin-top: 5%;">Cancel Transaction</button>
 
-                        <button id="addbtn" style="padding: 2%; width: 95%;
+                        <button id="checkbtn" style="padding: 2%; width: 95%;
                         color:white; background:#0b132b;border:1px solid
                         #0b132b; cursor:pointer; margin-top: 5%;">Check Out</button>
 
@@ -337,6 +337,64 @@ cancelspans.onclick = function() {
 window.onclick = function(event) {
   if (event.target == cancelmodal) {
     cancelmodal.style.display = "none";
+  }
+}
+</script>
+<!--========================================= FINISH TRANSACTION =========================================-->
+<!--modal-->
+<div id="checkmodal" class="modal">
+<!-- Modal content -->
+<div class="modal-content">
+  <span class="closeh">&times;</span>
+    <center><h3>FINALIZE TRANSACTION</h3><form action="posprocess.php" method="post">
+    
+        <?php
+        $user = 'root';
+        $pass = '';
+        $db = 'e_tinda';
+        $postblname = $storename."_POS";
+        $labeling = "YOUR TOTAL TRANSACTION IS:";
+        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+        $sql = "SELECT SUM(quantitySellingPrice) as totalTransaction FROM `e-tinda_reciepts`";
+        $result = $db->query($sql);if($result->num_rows >0){
+            while($row = $result->fetch_assoc()){
+                echo "<h2>".$labeling."</h2>"."<br>";
+                echo "<h1>".$row['totalTransaction']."</h1>";
+            }
+        }
+    ?>
+    <button id = "modalbutton" value="FinishTransaction" name="finishTransaction">CONFIRM</button>
+    </form>
+    </center>
+</div>
+
+</div>
+
+<script>
+ //---------Modal script of search
+
+var checkmodal = document.getElementById('checkmodal');
+
+// Get the button that opens the modal
+var checkbtns = document.getElementById("checkbtn");
+
+// Get the <span> element that closes the modal
+var checkspans = document.getElementsByClassName("closeh")[0];
+
+// When the user clicks the button, open the modal 
+checkbtns.onclick = function() {
+    checkmodal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+checkspans.onclick = function() {
+    checkmodal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == checkmodal) {
+    checkmodal.style.display = "none";
   }
 }
 </script>
