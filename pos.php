@@ -249,7 +249,7 @@ window.onclick = function(event) {
     </select>
     <input type="number" placeholder="Quantity" name ="quantity" value="0" style="width:70%; padding:2%; margin:3%;">
 
-    <button id = "modalbutton" value="RemoveProduct" name="removeProduct">Add Product</button>
+    <button id = "modalbutton" value="RemoveProduct" name="removeProduct">Remove Product</button>
     </form>
     </center>
 </div>

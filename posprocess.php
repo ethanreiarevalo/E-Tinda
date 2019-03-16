@@ -1,7 +1,5 @@
 <?php
 session_start();
-$updateItem = $_POST['product'];
-$updateStock = $_POST['quantity'];
 
 $conn_error = 'could not connect';
 $storename = $_SESSION['store_name'];
@@ -15,6 +13,9 @@ $Today=date('Y-m-d');
 $con = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, "e_tinda") ;
 
 if(isset($_POST["addProduct"])){
+    
+$updateItem = $_POST['product'];
+$updateStock = $_POST['quantity'];
     $sql2 = "SELECT * FROM `$storename` where itemName = '$updateItem'";
     $result = $con->query($sql2);
 
@@ -45,6 +46,8 @@ if(isset($_POST["addProduct"])){
     mysqli_close($con);
 
 }else if(isset($_POST["removeProduct"])){
+    
+$updateItem = $_POST['product'];
     $sql = "DELETE FROM `e-tinda_reciepts`where itemDescription = '$updateItem'";
 
     if(mysqli_query($con,$sql)===true){
