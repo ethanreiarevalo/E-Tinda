@@ -133,7 +133,24 @@ $lname=$_SESSION['last_name'];
                         <center>
                                 <h2 style="display: block;">Daily sales</h2>
                         
-                                <h1>P 5000.00</h1>
+                                <h1>
+                                  <?php
+                                    $user = 'root';
+                                    $pass = '';
+                                    $db = 'e_tinda';
+                                    $tblname = $storename."_POS";
+                                    $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                                    $sql = "SELECT SUM(sellingPrice) AS sqsPrice FROM `$tblname` WHERE dateModified = CURDATE()";
+                                    $result = $db->query($sql);
+
+                                    if($result->num_rows >0){
+                                      while($row = $result->fetch_assoc()){
+                                        $qsPrice = $row['sqsPrice'];
+                                        echo $qsPrice;
+                                      }
+                                    }
+                                  ?>
+                                </h1>
                                     
                                 <p><?php 
                                     echo date('d-F-Y');
@@ -148,9 +165,35 @@ $lname=$_SESSION['last_name'];
                             <center>
                                     <h2 style="display: block;">Weekly Sales</h2>
                                 
-                                    <h1>P 5000.00</h1>
+                                    <h1>
+                                    <?php
+                                        $user = 'root';
+                                        $pass = '';
+                                        $db = 'e_tinda';
+                                        $tblname = $storename."_POS";
+                                        $smonth = date('Y-m-d', strtotime("previous sunday"));
+                                        $emonth = date('Y-m-d', strtotime("next saturday"));
+                                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                                        $sql = "SELECT SUM(sellingPrice) AS sqsPrice FROM `$tblname` WHERE dateModified BETWEEN '$smonth' AND '$emonth'";
+                                        $result = $db->query($sql);
+                                        if($result->num_rows >0){
+                                          while($row = $result->fetch_assoc()){
+                                            $qsPrice = $row['sqsPrice'];
+                                            echo $qsPrice;
+                                          }
+                                        }
+                                        else{
+                                          echo "Error: " . $sql . "<br>" . mysqli_error($con);
+                                        }
+                                      ?>
+                                    </h1>
                                             
-                                    <p>March 4-10</p>
+                                    <p><?php
+                                    $smonth = date('Y-m-d', strtotime("previous sunday"));
+                                    $emonth = date('Y-m-d', strtotime("next saturday"));
+                                    echo $smonth." - ".$emonth;
+                                    ?>    
+                                    </p>
                             </center>
                             </a>
                                 
@@ -160,7 +203,29 @@ $lname=$_SESSION['last_name'];
                             <center>
                                     <h2 style="display: block;">Monthly Sales</h2>
                                     
-                                    <h1>P 5000.00</h1>
+                                    <h1>
+                                      <?php
+                                        $user = 'root';
+                                        $pass = '';
+                                        $db = 'e_tinda';
+                                        $tblname = $storename."_POS";
+                                        $smonth = date('Y-m').'-1';
+                                        $emonth = date('Y-m').'-31';
+                                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                                        $sql = "SELECT SUM(sellingPrice) AS sqsPrice FROM `$tblname` WHERE dateModified BETWEEN '$smonth' AND '$emonth'";
+                                        $result = $db->query($sql);
+                                        if($result->num_rows >0){
+                                          while($row = $result->fetch_assoc()){
+                                            $qsPrice = $row['sqsPrice'];
+                                            echo $qsPrice;
+                                          }
+                                        }
+                                        else{
+                                          echo "Error: " . $sql . "<br>" . mysqli_error($con);
+                                        }
+                                      ?>
+                                    
+                                    </h1>
                                                 
                                     <p><?php 
                                         echo date('F');
@@ -174,7 +239,30 @@ $lname=$_SESSION['last_name'];
                             <center>
                                     <h2 style="display: block;">Annual Sales</h2>
                                 
-                                    <h1>P 5000.00</h1>
+                                    <h1>
+                                    <?php
+                                        $user = 'root';
+                                        $pass = '';
+                                        $db = 'e_tinda';
+                                        $tblname = $storename."_POS";
+                                        $smonth = date('Y').'-1-1';
+                                        $emonth = date('Y').'-12-31';
+                                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                                        $sql = "SELECT SUM(sellingPrice) AS sqsPrice FROM `$tblname` WHERE dateModified BETWEEN '$smonth' AND '$emonth'";
+                                        $result = $db->query($sql);
+                                        if($result->num_rows >0){
+                                          while($row = $result->fetch_assoc()){
+                                            $qsPrice = $row['sqsPrice'];
+                                            echo $qsPrice;
+                                          }
+                                        }
+                                        else{
+                                          echo "Error: " . $sql . "<br>" . mysqli_error($con);
+                                        }
+                                      ?>
+                                    
+
+                                    </h1>
                                             
                                     <p><?php 
                                         echo date('Y');
