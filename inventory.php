@@ -90,8 +90,9 @@ $lname=$_SESSION['last_name'];
                                         $pass = '';
                                         $db = 'e_tinda';
                                         $tblname = $storename."_POS";
-                                        $smonth = date('Y-m-d', strtotime("previous sunday"));
-                                        $emonth = date('Y-m-d', strtotime("next saturday"));
+                                        $day = date('w');
+                                        $smonth = date('Y-m-d', strtotime('-'.$day.' days'));
+                                        $emonth = date('Y-m-d', strtotime('+'.(6-$day).' days'));
                                         $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
                                         $sql = "SELECT SUM(sellingPrice) AS sqsPrice FROM `$tblname` WHERE dateModified BETWEEN '$smonth' AND '$emonth'";
                                         $result = $db->query($sql);
@@ -108,9 +109,11 @@ $lname=$_SESSION['last_name'];
                                     </h1>
                                             
                                     <p><?php
-                                    $smonth = date('Y-m-d', strtotime("previous sunday"));
-                                    $emonth = date('Y-m-d', strtotime("next saturday"));
-                                    echo $smonth." - ".$emonth;
+                                    $day = date('w');
+                                    $smonth = date('d', strtotime('-'.$day.' days'));
+                                    $emonth = date('d', strtotime('+'.(6-$day).' days'));
+                                    $month = date('F');
+                                    echo $smonth." - ".$emonth." ".$month;
                                     ?>    
                                     </p>
                             </center>
