@@ -41,6 +41,116 @@ $lname=$_SESSION['last_name'];
         </center>  
     </div>
 
+    <div id = "tab">
+        <button class="tablink" onclick="openPage('Home', this, '#5bc0eb')" id="defaultOpen">Daily</button>
+        <button class="tablink" onclick="openPage('News', this, '#5bc0eb')" >Weekly</button>
+        <button class="tablink" onclick="openPage('Contact', this, '#5bc0eb')">Monthly</button>
+        <button class="tablink" onclick="openPage('About', this, '#5bc0eb')">Annual</button>
+
+        <div id="Home" class="tabcontent">
+            <center>
+                <h3>Your Daily Transactions</h3>
+                <select name="" id="select">
+                    <option value=""></option>
+                </select>
+
+                <table>
+                    <tr>
+                        
+                        <th>Capital Price</th>
+                        <th>Selling Price</th>
+                        
+                        <th>Date</th>
+                    </tr>
+                </table>
+                <h2>Total: P</h2>
+
+            </center>
+        </div>
+
+        <div id="News" class="tabcontent">
+            <center>
+                <h3>Your Weekly Transactions</h3>
+                <select name="" id="select">
+                    <option value=""></option>
+                </select>
+
+                 <table>
+                    <tr>
+                        
+                        <th>Capital Price</th>
+                        <th>Selling Price</th>
+                        
+                        <th>Date</th>
+                    </tr>
+                </table>
+                <h2>Total: P</h2>
+
+            </center>
+        </div>
+
+        <div id="Contact" class="tabcontent">
+            <center>
+                <h3>Your Monthly Transactions</h3>
+                <select name="" id="select">
+                    <option value=""></option>
+                </select>
+
+                <table>
+                    <tr>
+                        
+                        <th>Capital Price</th>
+                        <th>Selling Price</th>
+                        
+                        <th>Date</th>
+                    </tr>
+                </table>
+                <h2>Total: P</h2>
+
+            </center>
+        </div>
+
+        <div id="About" class="tabcontent">
+            <center>
+                <h3>Your Annual Transactions</h3>
+                <select name="" id="select">
+                    <option value=""></option>
+                </select>
+
+                <table>
+                    <tr>
+                        
+                        <th>Capital Price</th>
+                        <th>Selling Price</th>
+                        
+                        <th>Date</th>
+                    </tr>
+                </table>
+                <h2>Total: P</h2>
+
+            </center>
+        </div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+    </div>
+
 
 
 </body>

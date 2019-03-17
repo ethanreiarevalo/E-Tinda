@@ -63,3 +63,68 @@ li{
 #link:hover{
     background-color: #1c2541;
 }
+
+
+/* Style tab links */
+.tablink {
+    background-color: #3a506b;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+  }
+  
+  .tablink:hover {
+    background-color: #5bc0eb;
+  }
+  
+  /* Style the tab content (and add height:100% for full page content) */
+  .tabcontent {
+    color: #1c2541;
+    display: none;
+    padding: 100px 20px;
+    height: 70vh;
+  }
+  
+  #Home {background-color:ghostwhite;}
+  #News {background-color: ghostwhite;}
+  #Contact {background-color: ghostwhite;}
+  #About {background-color: ghostwhite;}
+
+  #select{
+      box-sizing: border-box;
+      width: 30%;
+      height: 5vh;
+      border-radius: 5px;
+
+  }
+
+
+table{
+    margin-top:3%;
+    width: 50%;
+    
+    
+}
+th{
+    color: #ffffff;
+    padding: 3%;
+    background-color: #0b132b;
+}
+tr{
+    color: #ffffff;
+}
+td{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+tr:nth-child(odd){
+    background-color: #3a506b;
+}
+tr:nth-child(even){
+    background-color:#1c2541;
+}
