@@ -16,7 +16,7 @@ if(isset($_POST["addProduct"])){ //=====================add item for buying
     
     $updateItem = $_POST['product'];
     $updateStock = $_POST['quantity'];
-    $sql2 = "SELECT * FROM `$storename` where itemName = '$updateItem'";
+    $sql2 = "SELECT * FROM `$storename` where itemName = '$updateItem' AND stock > '$updateStock'";
     $result = $con->query($sql2);
 
     if($result->num_rows >0){
@@ -36,6 +36,10 @@ if(isset($_POST["addProduct"])){ //=====================add item for buying
         }
         mysqli_close($con);
 
+    }else{
+        $message = "NOT ENOUGH STOCK!";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+        header("refresh:0;url=pos.php");
     }
 }
 //=================================================================================================================
@@ -87,17 +91,13 @@ else if(isset($_POST["canceltransN"])){//=====================cancel transaction
 
 
 else if(isset($_POST["finishTransaction"])){//=======================finish transaction
-    $sql = "SELECT SUM(itemQuantity) AS sQuantity, SUM(quantitySellingPrice) AS sqsPrice, 
-    SUM(quantityCapitalPrice) AS sqcPrice, itemQuantity, itemDescription FROM `e-tinda_reciepts`";
-    $result = $con->query($sql);
-    // if(mysqli_query($con,$sql)===true)
+    $sql = "SELECT itemQuantity, itemDescription FROM `e-tinda_reciepts`";
+    $result = mysqli_query($con,$sql);
     if($result->num_rows >0){ //========SELECT FROM ETINDARECIEPTS
         while($row = mysqli_fetch_assoc($result)) {
             $iquantity = $row["itemQuantity"];
             $iDescription = $row["itemDescription"];
-            $sumQuantity = $row["sQuantity"];
-            $sumsPrice = $row["sqsPrice"];
-            $sumcPrice = $row["sqcPrice"];
+            
             $storePOS = $storename."_POS";
             $Today=date('Y-F-d');
             
@@ -105,22 +105,7 @@ else if(isset($_POST["finishTransaction"])){//=======================finish tran
             where itemName = '$iDescription'";
             
             if(mysqli_query($con,$sql1)===true){//===========update inventory
-                $sql2 = "INSERT INTO `$storePOS` VALUES (null,'customer buys','$sumQuantity','$sumcPrice','$sumsPrice',CURDATE())";
-                
-                if(mysqli_query($con,$sql2)===true){//=============insert in pos
-                    $sql3 = "DELETE FROM `e-tinda_reciepts`";
-
-                    if(mysqli_query($con,$sql3)===true){//================clears reciept
-                        header("refresh:0;url=pos.php");
-                    } else {
-                        echo "Error: " . $sql3 . "<br>" . mysqli_error($con);
-                    }
-
-
-
-                } else {
-                    echo "Error: " . $sql2 . "<br>" . mysqli_error($con);
-                }
+                echo $Today;
             } else {
                 echo "Error: " . $sql1 . "<br>" . mysqli_error($con);
             
@@ -129,7 +114,33 @@ else if(isset($_POST["finishTransaction"])){//=======================finish tran
         } 
     }else {
         echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    }
+    echo $sql;
+    $sql0 = "SELECT SUM(itemQuantity) AS sQuantity, SUM(quantitySellingPrice) AS sqsPrice, 
+    SUM(quantityCapitalPrice) AS sqcPrice FROM `e-tinda_reciepts`";
+    $result0 = mysqli_query($con,$sql0);
+    if($result0->num_rows >0){ //========SELECT TOTAL FROM ETINDARECIEPTS
+        
+        while($row = mysqli_fetch_assoc($result0)) {
+            $sumQuantity = $row["sQuantity"];
+            $sumsPrice = $row["sqsPrice"];
+            $sumcPrice = $row["sqcPrice"];
+            $sql2 = "INSERT INTO `$storePOS` VALUES (null,'customer buys','$sumQuantity','$sumcPrice','$sumsPrice',CURDATE())";
+            if(mysqli_query($con,$sql2)===true){//=============insert in pos
+                $sql3 = "DELETE FROM `e-tinda_reciepts`";
+                if(mysqli_query($con,$sql3)===true){//================clears reciept
+                    header("refresh:0;url=pos.php");
+                } else {
+                    echo "Error: " . $sql3 . "<br>" . mysqli_error($con);
+                }
+            } else {
+                echo "Error: " . $sql2 . "<br>" . mysqli_error($con);
+            }
         }
+    }else {
+        echo "Error: " . $sql0 . "<br>" . mysqli_error($con);
+    }
+    
     mysqli_close($con);
 }
 ?>
