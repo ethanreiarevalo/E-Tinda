@@ -102,7 +102,24 @@ $lname=$_SESSION['last_name'];
                 <div id="total" style="height:15vh;">
                     <center>
                         <h3 style="margin: 0%;margin-top: 3%; padding: 0%;">Total</h3>
-                        <h1 style="margin: 0;">P5000</h1>
+                        <h1 style="margin: 0;">
+                          <?php
+                            $user = 'root';
+                            $pass = '';
+                            $db = 'e_tinda';
+                            $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                            $sql = "SELECT SUM(quantitySellingPrice) AS sqsPrice FROM `e-tinda_reciepts`";
+                            $result = $db->query($sql);
+
+                            if($result->num_rows >0){
+                              while($row = $result->fetch_assoc()){
+                                $qsPrice = $row['sqsPrice'];
+                                echo $qsPrice;
+                              }
+                            }
+                       
+                          ?>
+                        </h1>
                         
                     </center>
                 </div>

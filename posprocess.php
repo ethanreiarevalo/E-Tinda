@@ -89,8 +89,9 @@ else if(isset($_POST["canceltransN"])){//=====================cancel transaction
 else if(isset($_POST["finishTransaction"])){//=======================finish transaction
     $sql = "SELECT SUM(itemQuantity) AS sQuantity, SUM(quantitySellingPrice) AS sqsPrice, 
     SUM(quantityCapitalPrice) AS sqcPrice, itemQuantity, itemDescription FROM `e-tinda_reciepts`";
-
-    if(mysqli_query($con,$sql)===true){ //========SELECT FROM ETINDARECIEPTS
+    $result = $con->query($sql);
+    // if(mysqli_query($con,$sql)===true)
+    if($result->num_rows >0){ //========SELECT FROM ETINDARECIEPTS
         while($row = mysqli_fetch_assoc($result)) {
             $iquantity = $row["itemQuantity"];
             $iDescription = $row["itemDescription"];
@@ -100,14 +101,23 @@ else if(isset($_POST["finishTransaction"])){//=======================finish tran
             $storePOS = $storename."_POS";
             $Today=date('Y-F-d');
             
-            $sql1 = "UPDATE `$storename` set  stock = '$iquantity', dateModified = '$Today' 
+            $sql1 = "UPDATE `$storename` set  stock = stock-'$iquantity', dateModified = CURDATE() 
             where itemName = '$iDescription'";
             
             if(mysqli_query($con,$sql1)===true){//===========update inventory
-                $sql2 = "INSERT INTO `$storePOS` VALUES (null,null,'$sumQuantity','$sumcPrice','$sumsPrice','$Today')";
+                $sql2 = "INSERT INTO `$storePOS` VALUES (null,'customer buys','$sumQuantity','$sumcPrice','$sumsPrice',CURDATE())";
                 
                 if(mysqli_query($con,$sql2)===true){//=============insert in pos
-                    header("refresh:0;url=pos.php");
+                    $sql3 = "DELETE FROM `e-tinda_reciepts`";
+
+                    if(mysqli_query($con,$sql3)===true){//================clears reciept
+                        header("refresh:0;url=pos.php");
+                    } else {
+                        echo "Error: " . $sql3 . "<br>" . mysqli_error($con);
+                    }
+
+
+
                 } else {
                     echo "Error: " . $sql2 . "<br>" . mysqli_error($con);
                 }
