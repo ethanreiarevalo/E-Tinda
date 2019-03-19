@@ -35,7 +35,7 @@ $lname=$_SESSION['last_name'];
             <a id = "dashlink" href="inventory.php" ><div id="link"><h5>Inventory</h5></div></a>
             <div id="hr"></div>
             <a id = "dashlink" href="sale_report.php" ><div id="link">Reports</div></a>
-            
+            <a id = "dashlink" href="Inventory_pdf.php" ><div id="link">Inventory Pdf</div></a> 
             <a id = "dashlink" href="logout.php" ><div id="link">Logout</div></a> 
         
         </center>

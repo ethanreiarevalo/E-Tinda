@@ -59,8 +59,13 @@ $lname=$_SESSION['last_name'];
                         
                         <th>Capital Price</th>
                         <th>Selling Price</th>
-                        
                         <th>Date</th>
+                    </tr>
+
+                    <tr>
+                        <td><center>Example</center></td>
+                        <td><center>Example</center></td>
+                        <td><center>Example</center></td>
                     </tr>
                 </table>
                 <h2>Total: P</h2>
@@ -83,6 +88,13 @@ $lname=$_SESSION['last_name'];
                         
                         <th>Date</th>
                     </tr>
+
+                    <tr>
+                        <td><center>Example</center></td>
+                        <td><center>Example</center></td>
+                        <td><center>Example</center></td>
+                    </tr>
+
                 </table>
                 <h2>Total: P</h2>
 
@@ -104,6 +116,13 @@ $lname=$_SESSION['last_name'];
                         
                         <th>Date</th>
                     </tr>
+
+                    <tr>
+                        <td><center>Example</center></td>
+                        <td><center>Example</center></td>
+                        <td><center>Example</center></td>
+                    </tr>
+
                 </table>
                 <h2>Total: P</h2>
 
@@ -125,6 +144,13 @@ $lname=$_SESSION['last_name'];
                         
                         <th>Date</th>
                     </tr>
+
+                    <tr>
+                        <td><center>Example</center></td>
+                        <td><center>Example</center></td>
+                        <td><center>Example</center></td>
+                    </tr>
+                    
                 </table>
                 <h2>Total: P</h2>
 
