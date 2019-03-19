@@ -277,7 +277,7 @@ $lname=$_SESSION['last_name'];
     ?>
     </select>
     
-    <input type='number' name='cPrice' step='0.01' value='$value' style='width:70%; padding:2%; margin:3%;' >
+    <input type='number' name='cPrice' step='0.01' placeholder = "Capital Price" value='$value' style='width:70%; padding:2%; margin:3%;' >
     <input type="number" name="sPrice" step="0.01" placeholder="Selling Price" style="width:70%; padding:2%; margin:3%;">
     <button id = "modalbutton" value="Update" name="update">Update</button>
     </form>
@@ -406,6 +406,11 @@ window.onclick = function(event) {
   }
 }
 </script>
+
+
+
+
+
             </div>
         </div>
     </div>
