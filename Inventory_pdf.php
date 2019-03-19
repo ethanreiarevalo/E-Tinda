@@ -3,7 +3,7 @@ session_start();
 $storename = $_SESSION['store_name'];
 require "fpdf/fpdf.php";
 $db = new PDO('mysql:host=localhost;dbname=e_tinda','root','');
-$sql = "SELECT itemName, stock, capital, ";
+
 class myPDF extends FPDF{
     function header(){
         $this->SetFont('Arial','B',17);
@@ -34,16 +34,14 @@ class myPDF extends FPDF{
     }
 
     function viewTable($db){
-        
-       
-        
+ 
         $this->SetFont('Times','',12);
-        $stmt = $db->query($sql);
+        $stmt = $db->query('select itemName,stock from `$storename`');
         while($data = $stmt->fetch(PDO::FETCH_OBJ)){
             $this->Cell(100,10,$data->itemName,1,0,'C');
-            $this->Cell(55,10,$data->stock,1,0,'C');
-            $this->Cell(55,10,$data->capital,1,0,'C');
-            $this->Cell(55,10,$data->sellingPrice,1,0,'C');
+             $this->Cell(55,10,$data->stock,1,0,'C');
+            // $this->Cell(55,10,$data->capital,1,0,'C');
+            // $this->Cell(55,10,$data->sellingPrice,1,0,'C');
             $this->Ln();
         }
     }
