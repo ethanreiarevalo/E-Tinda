@@ -61,12 +61,23 @@ $lname=$_SESSION['last_name'];
                         <th>Selling Price</th>
                         <th>Date</th>
                     </tr>
+                    <?php
+                        $user = 'root';
+                        $pass = '';
+                        $db = 'e_tinda';
+                        $tblname = $storename."_POS";
+                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                        $sql = "SELECT capital, sellingPrice, dateModified FROM `$tblname` WHERE dateModified = CURDATE()";
+                        $result = $db->query($sql);
 
-                    <tr>
-                        <td><center>Example</center></td>
-                        <td><center>Example</center></td>
-                        <td><center>Example</center></td>
-                    </tr>
+                        if($result->num_rows >0){
+                            while($row = $result->fetch_assoc()){
+                                echo '<tr><td><center>' .$row["capital"]. '</center></td>';
+                                echo '<td><center><div contenteditable>' .$row["sellingPrice"]. '</div> </center></td>';
+                                echo '<td><center>' .$row["dateModified"]. '</center></td><tr>';
+                            }
+                        }
+                    ?>
                 </table>
                 <h2>Total: P</h2>
 
@@ -89,11 +100,26 @@ $lname=$_SESSION['last_name'];
                         <th>Date</th>
                     </tr>
 
-                    <tr>
-                        <td><center>Example</center></td>
-                        <td><center>Example</center></td>
-                        <td><center>Example</center></td>
-                    </tr>
+                    <?php
+                        $user = 'root';
+                        $pass = '';
+                        $db = 'e_tinda';
+                        $tblname = $storename."_POS";
+                        $day = date('w');
+                        $smonth = date('Y-m-d', strtotime('-'.$day.' days'));
+                        $emonth = date('Y-m-d', strtotime('+'.(6-$day).' days'));
+                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                        $sql = "SELECT capital, sellingPrice, dateModified FROM `$tblname` WHERE dateModified BETWEEN '$smonth' AND '$emonth'";
+                        $result = $db->query($sql);
+
+                        if($result->num_rows >0){
+                            while($row = $result->fetch_assoc()){
+                                echo '<tr><td><center>' .$row["capital"]. '</center></td>';
+                                echo '<td><center><div contenteditable>' .$row["sellingPrice"]. '</div> </center></td>';
+                                echo '<td><center>' .$row["dateModified"]. '</center></td><tr>';
+                            }
+                        }
+                    ?>
 
                 </table>
                 <h2>Total: P</h2>
@@ -117,11 +143,25 @@ $lname=$_SESSION['last_name'];
                         <th>Date</th>
                     </tr>
 
-                    <tr>
-                        <td><center>Example</center></td>
-                        <td><center>Example</center></td>
-                        <td><center>Example</center></td>
-                    </tr>
+                    <?php
+                        $user = 'root';
+                        $pass = '';
+                        $db = 'e_tinda';
+                        $tblname = $storename."_POS";
+                        $smonth = date('Y-m').'-1';
+                        $emonth = date('Y-m').'-31';
+                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                        $sql = "SELECT capital, sellingPrice, dateModified FROM `$tblname` WHERE dateModified BETWEEN '$smonth' AND '$emonth'";
+                        $result = $db->query($sql);
+
+                        if($result->num_rows >0){
+                            while($row = $result->fetch_assoc()){
+                                echo '<tr><td><center>' .$row["capital"]. '</center></td>';
+                                echo '<td><center><div contenteditable>' .$row["sellingPrice"]. '</div> </center></td>';
+                                echo '<td><center>' .$row["dateModified"]. '</center></td><tr>';
+                            }
+                        }
+                    ?>
 
                 </table>
                 <h2>Total: P</h2>
@@ -145,11 +185,25 @@ $lname=$_SESSION['last_name'];
                         <th>Date</th>
                     </tr>
 
-                    <tr>
-                        <td><center>Example</center></td>
-                        <td><center>Example</center></td>
-                        <td><center>Example</center></td>
-                    </tr>
+                    <?php
+                        $user = 'root';
+                        $pass = '';
+                        $db = 'e_tinda';
+                        $tblname = $storename."_POS";
+                        $smonth = date('Y').'-1-1';
+                        $emonth = date('Y').'-12-31';
+                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                        $sql = "SELECT capital, sellingPrice, dateModified FROM `$tblname` WHERE dateModified BETWEEN '$smonth' AND '$emonth'";
+                        $result = $db->query($sql);
+
+                        if($result->num_rows >0){
+                            while($row = $result->fetch_assoc()){
+                                echo '<tr><td><center>' .$row["capital"]. '</center></td>';
+                                echo '<td><center><div contenteditable>' .$row["sellingPrice"]. '</div> </center></td>';
+                                echo '<td><center>' .$row["dateModified"]. '</center></td><tr>';
+                            }
+                        }
+                    ?>
                     
                 </table>
                 <h2>Total: P</h2>

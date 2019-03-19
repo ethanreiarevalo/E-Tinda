@@ -49,210 +49,180 @@ $lname=$_SESSION['last_name'];
           
            <div id="report">
            <a href="sale_report.php">
-                        <center>
-                                <h2 style="display: block;">Daily sales</h2>
-                        
-                                <h1>
-                                  <?php
-                                    $user = 'root';
-                                    $pass = '';
-                                    $db = 'e_tinda';
-                                    $tblname = $storename."_POS";
-                                    $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
-                                    $sql = "SELECT SUM(sellingPrice) AS sqsPrice FROM `$tblname` WHERE dateModified = CURDATE()";
-                                    $result = $db->query($sql);
+              <center>
+                <h2 style="display: block;">Daily sales</h2>        
+                <h1>
+                  <?php
+                    $user = 'root';
+                    $pass = '';
+                    $db = 'e_tinda';
+                    $tblname = $storename."_POS";
+                    $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                    $sql = "SELECT SUM(sellingPrice) AS sqsPrice FROM `$tblname` WHERE dateModified = CURDATE()";
+                    $result = $db->query($sql);
 
-                                    if($result->num_rows >0){
-                                      while($row = $result->fetch_assoc()){
-                                        $qsPrice = $row['sqsPrice'];
-                                        echo $qsPrice;
-                                      }
-                                    }
-                                  ?>
-                                </h1>
+                    if($result->num_rows >0){
+                      while($row = $result->fetch_assoc()){
+                        $qsPrice = $row['sqsPrice'];
+                        echo $qsPrice;
+                      }
+                    }
+                  ?>
+                </h1>
                                     
-                                <p><?php 
-                                    echo date('d-F-Y');
-                                ?></p>
-                            </center>
-                        </a>
-                            
-                            
-                        </div>
-                        <div id="report">
-                            <a href="sale_report.php">
-                            <center>
-                                    <h2 style="display: block;">Weekly Sales</h2>
-                                
-                                    <h1>
-                                    <?php
-                                        $user = 'root';
-                                        $pass = '';
-                                        $db = 'e_tinda';
-                                        $tblname = $storename."_POS";
-                                        $day = date('w');
-                                        $smonth = date('Y-m-d', strtotime('-'.$day.' days'));
-                                        $emonth = date('Y-m-d', strtotime('+'.(6-$day).' days'));
-                                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
-                                        $sql = "SELECT SUM(sellingPrice) AS sqsPrice FROM `$tblname` WHERE dateModified BETWEEN '$smonth' AND '$emonth'";
-                                        $result = $db->query($sql);
-                                        if($result->num_rows >0){
-                                          while($row = $result->fetch_assoc()){
-                                            $qsPrice = $row['sqsPrice'];
-                                            echo $qsPrice;
-                                          }
-                                        }
-                                        else{
-                                          echo "Error: " . $sql . "<br>" . mysqli_error($con);
-                                        }
-                                      ?>
-                                    </h1>
-                                            
-                                    <p><?php
-                                    $day = date('w');
-                                    $smonth = date('d', strtotime('-'.$day.' days'));
-                                    $emonth = date('d', strtotime('+'.(6-$day).' days'));
-                                    $month = date('F');
-                                    echo $smonth." - ".$emonth." ".$month;
-                                    ?>    
-                                    </p>
-                            </center>
-                            </a>
-                                
-                        </div>
-                        <div id="report">
-                            <a href="sale_report.php">
-                            <center>
-                                    <h2 style="display: block;">Monthly Sales</h2>
-                                    
-                                    <h1>
-                                      <?php
-                                        $user = 'root';
-                                        $pass = '';
-                                        $db = 'e_tinda';
-                                        $tblname = $storename."_POS";
-                                        $smonth = date('Y-m').'-1';
-                                        $emonth = date('Y-m').'-31';
-                                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
-                                        $sql = "SELECT SUM(sellingPrice) AS sqsPrice FROM `$tblname` WHERE dateModified BETWEEN '$smonth' AND '$emonth'";
-                                        $result = $db->query($sql);
-                                        if($result->num_rows >0){
-                                          while($row = $result->fetch_assoc()){
-                                            $qsPrice = $row['sqsPrice'];
-                                            echo $qsPrice;
-                                          }
-                                        }
-                                        else{
-                                          echo "Error: " . $sql . "<br>" . mysqli_error($con);
-                                        }
-                                      ?>
-                                    
-                                    </h1>
-                                                
-                                    <p><?php 
-                                        echo date('F');
-                                    ?></p>
-                            </center>
-                            </a>
-                                
-                        </div>
-                        <div id="report">
-                            <a href="sale_report.php">
-                            <center>
-                                    <h2 style="display: block;">Annual Sales</h2>
-                                
-                                    <h1>
-                                    <?php
-                                        $user = 'root';
-                                        $pass = '';
-                                        $db = 'e_tinda';
-                                        $tblname = $storename."_POS";
-                                        $smonth = date('Y').'-1-1';
-                                        $emonth = date('Y').'-12-31';
-                                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
-                                        $sql = "SELECT SUM(sellingPrice) AS sqsPrice FROM `$tblname` WHERE dateModified BETWEEN '$smonth' AND '$emonth'";
-                                        $result = $db->query($sql);
-                                        if($result->num_rows >0){
-                                          while($row = $result->fetch_assoc()){
-                                            $qsPrice = $row['sqsPrice'];
-                                            echo $qsPrice;
-                                          }
-                                        }
-                                        else{
-                                          echo "Error: " . $sql . "<br>" . mysqli_error($con);
-                                        }
-                                      ?>
-                                    
-
-                                    </h1>
-                                            
-                                    <p><?php 
-                                        echo date('Y');
-                                    ?></p>
-                                </center>
-                            </a>
+                <p><?php 
+                  echo date('d-F-Y');
+                ?></p>
+              </center>
+            </a>
             </div>
-
+            <div id="report">
+              <a href="sale_report.php">
+                <center>
+                  <h2 style="display: block;">Weekly Sales</h2>
+                  <h1>
+                    <?php
+                      $user = 'root';
+                        $pass = '';
+                        $db = 'e_tinda';
+                        $tblname = $storename."_POS";
+                        $day = date('w');
+                        $smonth = date('Y-m-d', strtotime('-'.$day.' days'));
+                        $emonth = date('Y-m-d', strtotime('+'.(6-$day).' days'));
+                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                        $sql = "SELECT SUM(sellingPrice) AS sqsPrice FROM `$tblname` WHERE dateModified BETWEEN '$smonth' AND '$emonth'";
+                        $result = $db->query($sql);
+                        if($result->num_rows >0){
+                          while($row = $result->fetch_assoc()){
+                            $qsPrice = $row['sqsPrice'];
+                            echo $qsPrice;
+                          }
+                        }
+                        else{
+                          echo "Error: " . $sql . "<br>" . mysqli_error($con);
+                        }
+                    ?>
+                  </h1>
+                  <p><?php
+                    $day = date('w');
+                    $smonth = date('d', strtotime('-'.$day.' days'));
+                    $emonth = date('d', strtotime('+'.(6-$day).' days'));
+                    $month = date('F');
+                    echo $smonth." - ".$emonth." ".$month;
+                  ?></p>
+                </center>
+              </a>               
+            </div>
+            <div id="report">
+              <a href="sale_report.php">
+                <center>
+                  <h2 style="display: block;">Monthly Sales</h2>
+                  <h1>
+                    <?php
+                      $user = 'root';
+                      $pass = '';
+                      $db = 'e_tinda';
+                      $tblname = $storename."_POS";
+                      $smonth = date('Y-m').'-1';
+                      $emonth = date('Y-m').'-31';
+                      $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                      $sql = "SELECT SUM(sellingPrice) AS sqsPrice FROM `$tblname` WHERE dateModified BETWEEN '$smonth' AND '$emonth'";
+                      $result = $db->query($sql);
+                      if($result->num_rows >0){
+                        while($row = $result->fetch_assoc()){
+                          $qsPrice = $row['sqsPrice'];
+                          echo $qsPrice;
+                        }
+                      }else{
+                        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+                      }
+                    ?>
+                  </h1>
+                  <p><?php 
+                    echo date('F');
+                  ?></p>
+                </center>
+              </a>              
+            </div>
+            <div id="report">
+              <a href="sale_report.php">
+                <center>
+                  <h2 style="display: block;">Annual Sales</h2>
+                  <h1>
+                    <?php
+                      $user = 'root';
+                      $pass = '';
+                      $db = 'e_tinda';
+                      $tblname = $storename."_POS";
+                      $smonth = date('Y').'-1-1';
+                      $emonth = date('Y').'-12-31';
+                      $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                      $sql = "SELECT SUM(sellingPrice) AS sqsPrice FROM `$tblname` WHERE dateModified BETWEEN '$smonth' AND '$emonth'";
+                      $result = $db->query($sql);
+                      if($result->num_rows >0){
+                        while($row = $result->fetch_assoc()){
+                          $qsPrice = $row['sqsPrice'];
+                            echo $qsPrice;
+                          }
+                      }else{
+                        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+                      }
+                    ?>
+                  </h1>
+                  <p><?php 
+                    echo date('Y');
+                  ?></p>
+                </center>
+              </a>
+            </div>
         </div>
 
         <div id="table">
-            <div id="table_view">
+          <div id="table_view">
             <table>
-                    <tr>
-                        <th>Product</th>
-                        <th>Stock</th> 
-                        <th>Capital Price</th>
-                        <th>Selling Price</th>
-                        <th>Date Modified</th>
-                    </tr>
-                    <?php
-                        $user = 'root';
-                        $pass = '';
-                        $db = 'e_tinda';
-                        $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
-                        $sql = "select itemid,itemName, stock, capital, sellingPrice, dateModified from `$storename`";
-                        $result = $db->query($sql);
-
-
-                        if($result->num_rows >0){
-                            while($row = $result->fetch_assoc()){
-                            echo '<tr><td><center>' .$row["itemName"]. '</center></td>';
-                            echo '<td><center>' .$row["stock"]. '</center></td>';
-                            echo '<td><center><div contenteditable>' .$row["capital"]. '</div></center></td>';
-                            echo '<td><center><div contenteditable>' .$row["sellingPrice"]. '</div> </center></td>';
-                            echo '<td><center>' .$row["dateModified"]. '</center></td>';
-                            }
-                        }
-                       
-                    ?>
-                     
-                </table>
-                
-
-
+              <tr>
+                <th>Product</th>
+                <th>Stock</th> 
+                <th>Capital Price</th>
+                <th>Selling Price</th>
+                <th>Date Modified</th>
+              </tr>
+              <?php
+                $user = 'root';
+                $pass = '';
+                $db = 'e_tinda';
+                $db = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+                $sql = "select itemid,itemName, stock, capital, sellingPrice, dateModified from `$storename`";
+                $result = $db->query($sql);
+                if($result->num_rows >0){
+                  while($row = $result->fetch_assoc()){
+                    echo '<tr><td><center>' .$row["itemName"]. '</center></td>';
+                    echo '<td><center>' .$row["stock"]. '</center></td>';
+                    echo '<td><center><div contenteditable>' .$row["capital"]. '</div></center></td>';
+                    echo '<td><center><div contenteditable>' .$row["sellingPrice"]. '</div> </center></td>';
+                    echo '<td><center>' .$row["dateModified"]. '</center></td><tr>';
+                  }
+                }
+              ?>
+            </table>
+          </div>
+        <div id="add">
+          <div id="search_container">
+            <div id="search">
+              <label for="" style="display:block;">Update Product</label>                   
+              <button class="up" id="searchbtn" style="padding: 5%; width: 100%;
+              background:#0b132b; border: 1px solid #0b132b;
+              box-sizing:border-box; border-radius: 5px; color: white;
+              cursor:pointer;">Update</button>
             </div>
-
-
-            
-            <div id="add">
-                
-                <div id="search_container">
-                    <div id="search">
-                        <label for="" style="display:block;">Update Product</label>
-                        
-                        <button class="up" id="searchbtn" style="padding: 5%; width: 100%;
-                        background:#0b132b; border: 1px solid #0b132b;
-                        box-sizing:border-box; border-radius: 5px; color: white;
-                        cursor:pointer;">Update</button>
-                    </div>
-                </div>
-
+          </div>
+          
     <!-- Modal Search-->
 
 
+<!--============================== UPDATE ITEM =====================================-->
 <div id="searchmodal" class="modal">
 
-<!--============================== UPDATE ITEM =====================================-->
 <!-- Modal content -->
 <div class="modal-content" style="height: 38vh; margin-top:13%;">
   <span class="closex">&times;</span>
@@ -279,7 +249,7 @@ $lname=$_SESSION['last_name'];
     
     <input type='number' name='cPrice' step='0.01' placeholder = "Capital Price" value='$value' style='width:70%; padding:2%; margin:3%;' >
     <input type="number" name="sPrice" step="0.01" placeholder="Selling Price" style="width:70%; padding:2%; margin:3%;">
-    <button id = "modalbutton" value="Update" name="update">Update</button>
+    <button id = "selectItemButton" value="Update" name="update">Update</button>
     </form>
     </center>
 </div>
@@ -341,9 +311,9 @@ window.onclick = function(event) {
 
     <!-- Modal Search-->
 
+<!--============================== ADD ITEM STOCK =====================================-->
 
 <div id="stockmodal" class="modal" >
-<!--============================== ADD ITEM STOCK =====================================-->
 <!-- Modal content -->
 <div class="modal-content" style="height: 30vh; margin-top:15%;">
   <span class="closey">&times;</span>
