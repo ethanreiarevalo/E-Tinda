@@ -36,7 +36,7 @@ class myPDF extends FPDF{
     function viewTable($db){
  
         $this->SetFont('Times','',12);
-        $stmt = $db->query('select itemName,stock from `$storename`');
+        $stmt = $db->query('select itemName,stock from `t_account`');
         while($data = $stmt->fetch(PDO::FETCH_OBJ)){
             $this->Cell(100,10,$data->itemName,1,0,'C');
              $this->Cell(55,10,$data->stock,1,0,'C');
