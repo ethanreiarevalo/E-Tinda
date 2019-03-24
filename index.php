@@ -40,56 +40,32 @@
         
         <div id="content1">
             <div id="imageholder">
-               
-                    <div id="container">
+                <div id="container">
                     <div id="slider">
-<figure>
-<img src="c_images/inventory.png" alt=>
-<img src="c_images/pos.png" alt>
-<img src="c_images/inventory.png" alt=>
-</figure>
-</div>
-
-
-
+                        <figure>
+                            <img src="c_images/inventory.png" alt=>
+                            <img src="c_images/pos.png" alt>
+                            <img src="c_images/inventory.png" alt=>
+                        </figure>
                     </div>
-
-
-
-
-               
-
-
+                </div>
             </div>
-
-
-
-
-
-
-
-
-            
-                <form action="register.php" id = "signform" method="post">
-                    <center><h1>Register <br>Now!</h1></center>
+            <form action="register.php" id = "signform" method="post">
+                <center><h1>Register <br>Now!</h1></center>
                     <input id="sign" type="text" placeholder="Username" name="username">
                     <input id="sign" type="password" placeholder="Password" name="password">
                     <input id="sign" type="text" placeholder="Email" name="email">
                     <input id="sign" type="text" placeholder="Store Name" name="store_name">
                     <input id="sign" type="text" placeholder="Your first name" name="first_name">
                     <input  id="sign"type="text" placeholder="Your last name" name="last_name">
-                    <center><button id="signup_button" value="Insert" type="submit">Sign Up!</button></center> 
-                </form>
-            
+                <center><button id="signup_button" value="Insert" type="submit">Sign Up!</button></center> 
+            </form>
         </div>
-        
         <div id="content2">
             <ul>
                 <li><div style="display:inline; font-size:large;"><img src="c_images/delivery.png"><strong>  | Manage Your Stocks</strong></div></li><br>
                 <li><div style="display:inline; font-size:large;"><img src="c_images/budget.png"><strong>  | Point-of sales System</strong></div></li><br>
                 <li><div style="display:inline; font-size:large;"><img src="c_images/news-report.png"><strong>  | Sales Report</strong></div></li>
-                
-                
             </ul>
             <div id="about">
             <h2 style="margin-top: 12%;">About E-Tinda</h2>
